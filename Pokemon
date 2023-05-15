@@ -8,12 +8,7 @@ public class Pokemon {
     public Pokemon (int i, String n, int hp, int a, int d, int sa, int sd, int s, int t1, int t2, boolean st){
         ID = i;
         String Name = n;
-        Stats[0] = hp;
-        Stats[1] = a;
-        Stats [2] = d; 
-        Stats[3] = sa; 
-        Stats[4] = sd; 
-        Stats[5] = s;
+        Stats[] = {hp, a, d, sa, sd, s};
         Type1 = t1; //First Type
         Type2 = t2; //Second Type
         SecType = st;   //is there a second type
