@@ -18,9 +18,20 @@ public class Pokemon {
         int Type2 = t2; //Second Type
         boolean SecType = st;   //is there a second type
     }
-
-    public String giveType (int t){
-        return Type [t];
+    public int giveType1(){
+        return Type1;
+    }
+    
+    public int giveType2(){
+        return Type2;
+    }
+    
+    public String giveStringType1(){
+        return Type[Type1];
+    }
+    
+    public String giveStringType2(){
+        return Type[Type2]
     }
 
 }
