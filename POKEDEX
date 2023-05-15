@@ -8,4 +8,9 @@ public class POKEDEX {
         next = new Pokemon (n, s, a, sa, sd, d, t1, t2, st);
         count ++;
     }
+    
+        
+    public String giveTypeName(int t){
+        return Type[t];
+    }
 }
