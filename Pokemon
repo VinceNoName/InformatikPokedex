@@ -25,13 +25,5 @@ public class Pokemon {
     public int giveType2(){
         return Type2;
     }
-    
-    public String giveStringType1(){
-        return Type[Type1];
-    }
-    
-    public String giveStringType2(){
-        return Type[Type2]
-    }
 
 }
