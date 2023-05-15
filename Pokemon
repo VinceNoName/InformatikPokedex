@@ -1,22 +1,22 @@
 public class Pokemon {
-    private int Spd;
-    private int Atk;
-    private int SpAtk;
-    private int SpDef;
-    private int Def;
+    private int ID;
+    private String Name;
+    private int[] Stats = new int[6];
+    private boolean SecType;
     private int Type1;
     private int Type2;
-    private boolean SecType;
-    public Pokemon (String n, int s,int a, int sa, int sd, int d, int t1, int t2, boolean st){
+    public Pokemon (int i, String n, int hp, int a, int d, int sa, int sd, int s, int t1, int t2, boolean st){
+        ID = i;
         String Name = n;
-        int Spd = s;    //Speed
-        int Atk = a;    //Attack
-        int SpAtk = sa; //specialAttack
-        int SpDef = sd;//specialDefense
-        int Def = d;    //Dfense
-        int Type1 = t1; //First Type
-        int Type2 = t2; //Second Type
-        boolean SecType = st;   //is there a second type
+        Stats[0] = hp;
+        Stats[1] = a;
+        Stats [2] = d; 
+        Stats[3] = sa; 
+        Stats[4] = sd; 
+        Stats[5] = s;
+        Type1 = t1; //First Type
+        Type2 = t2; //Second Type
+        SecType = st;   //is there a second type
     }
     public int giveType1(){
         return Type1;
