@@ -1,14 +1,20 @@
 public class Pokemon {
-    private int Spd
+    private int Spd;
+    private int Atk;
+    private int SpAtk;
+    private int SpDef;
+    private int Def;
+    private int Type1;
+    private int Type2;
     public Pokemon (String n, int s,int a, int sa, int sd, int d, int t1, int t2, boolean st){
         String Name = n;
         int Spd = s;    //Speed
         int Atk = a;    //Attack
         int SpAtk = sa; //specialAttack
-        int SpeDef = sd;//specialDefense
+        int SpDef = sd;//specialDefense
         int Def = d;    //Dfense
         int Type1 = t1; //First Type
-        int TYpe2 = t2; //Second Type
+        int Type2 = t2; //Second Type
         boolean SecType = st;   //is there a second type
     }
 
