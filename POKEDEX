@@ -1,0 +1,10 @@
+public class POKEDEX {
+    public Pokemon next;
+    public Pokemon first;
+    public int count;
+    
+    public void AddPokemon (String n, int s,int a, int sa, int sd, int d, int t1, int t2, boolean st) { 
+        next = new Pokemon (n, s, a, sa, sd, d, t1, t2, st);
+        count ++;
+    }
+}
