@@ -3,7 +3,7 @@ public class NODE {
     private int Number;
     private Pokemon Poke;
     
-    public NODE (NODE nex Pokemon Pok){
+    public NODE (NODE nex, Pokemon Pok){
         next = nex;
         Poke = Pok;
         Number = Pok.giveID();
@@ -33,7 +33,7 @@ public class NODE {
     }
 
     public int giveNr(){
-        return 
+        return Number;
     }
 
 }
