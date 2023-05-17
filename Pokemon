@@ -13,12 +13,32 @@ public class Pokemon {
         Type2 = t2; //Second Type
         SecType = st;   //is there a second type
     }
+    public int giveID(){
+        return ID;
+    }
+
+    public String giveName(){
+        return Name;
+    }
+
+    public boolean hasTwoTypes(){
+        return SecType;
+    }
+
     public int giveType1(){
         return Type1;
     }
     
     public int giveType2(){
         return Type2;
+    }
+
+    public int giveStat(int st){
+        return Stats[st];
+    }
+
+    public int giveBaseStatTotal(){
+            return Stats[0]+Stats[1]+Stats[2]+Stats[3]+Stats[4]+Stats[5];
     }
 
 }
