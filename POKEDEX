@@ -1,6 +1,6 @@
 public class POKEDEX {
-    public Pokemon next;
-    public Pokemon first;
+
+    public NODE first;
     public int count;
     public String [] Type = {"Normal", "Fire", "Water", "Grass", "Electric", "Ice", "Fighting", "Poison", "Ground", "Flying", "Psychic", "Bug", "Rock", "Ghost", "Dragon", "Dark", "Seel", "Fairy"}
     public int [] [] TypeChart = {{2,2,2,2,2,2,2,2,2,2,2,2,1,0,2,2,1,2},+  //Normal
@@ -29,5 +29,9 @@ public class POKEDEX {
         
     public String giveTypeName(int t){
         return Type[t];
+    }
+
+    public int countPok (){
+        return first.countPokemon();
     }
 }
