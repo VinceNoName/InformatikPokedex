@@ -10,4 +10,8 @@ public class NODE {
     public Pokemon PokemonGeben() {
         return Poke;
     }
+
+    public int countPokemon (){
+        return next.countPokemon()+1;
+    }
 }
