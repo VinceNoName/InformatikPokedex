@@ -3,6 +3,12 @@ public class NODE {
     private int Number;
     private Pokemon Poke;
     
+    public NODE (NODE nex, int num, Pokemon Pok){
+        next = nex;
+        Number = num;
+        Poke = Pok;
+    }
+    
     public void AddPokemon (int i, String n, int hp, int a, int d, int sa, int sd, int s, int t1, int t2, boolean st) { 
         Poke = new Pokemon (i, n, a, d, sa, sd, s, t1, t2, st);
     }
