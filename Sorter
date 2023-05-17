@@ -1,0 +1,9 @@
+public class Sorter {
+    private int midBST = 345;
+    private int midHP = 60;
+    private int midATK = 70;
+    private int midDEF = 65;
+    private int midSATK = 70;
+    private int midSDEF = 70;
+    private int midSPD = 70;
+}
