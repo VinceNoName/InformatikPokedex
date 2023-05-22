@@ -1,6 +1,12 @@
 public class Pokemon {
     private int ID;
     private String Name;
+    private int HP;
+    private int Attack;
+    private int Defense;
+    private int SpecialAttack;
+    private int SpecialDefense;
+    private int Speed;
     private int[] Stats;
     private boolean SecType;
     private int Type1;
@@ -8,6 +14,12 @@ public class Pokemon {
     public Pokemon (int i, String n, int hp, int a, int d, int sa, int sd, int s, int t1, int t2, boolean st){
         ID = i;
         Name = n;
+        HP = hp;
+        Attack = a;
+        Defense = d;
+        SpecialAttack = sa;
+        SpecialDefense = sd;
+        Speed = s;
         Stats = new int[] {hp, a, d, sa, sd, s};
         Type1 = t1; //First Type
         Type2 = t2; //Second Type
@@ -19,6 +31,30 @@ public class Pokemon {
 
     public String giveName(){
         return Name;
+    }
+    
+    public int giveHP(){
+        return HP;
+    }
+
+    public int giveAttack(){
+        return Attack;
+    }
+
+    public int giveDefense(){
+        return Defense;
+    }
+
+    public int giveSpecialAttack(){
+        return SpecialAttack;
+    }
+
+    public int giveSpecialDefense(){
+        return SpecialDefense;
+    }
+
+    public int giveSpeed(){
+        return Speed;
     }
 
     public boolean hasTwoTypes(){
