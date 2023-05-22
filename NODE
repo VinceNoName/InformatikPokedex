@@ -9,14 +9,14 @@ public class NODE {
         Number = Pok.giveID();
     }
 
-    public NODE AddPokemon (int i, String n, int hp, int a, int d, int sa, int sd, int s, int t1, int t2, boolean st) { 
+    public void AddPokemon (int i, String n, int hp, int a, int d, int sa, int sd, int s, int t1, int t2, boolean st) { 
         if(Number < i && next.Number > i){
             NODE tempnext = next;
-            Pokemon Pke = new Pokemon(i, n, a, d, sa, sd, s, t1, t2, st);
+            Pokemon Pke = new Pokemon(i, n, hp, a, d, sa, sd, s, t1, t2, st);
             next = new NODE(tempnext, Pke);
         }
         else {
-            next.AddPokemon(i, n, a, d, sa, sd, s, t1, t2, st);
+            next.AddPokemon(i, n, hp, a, d, sa, sd, s, t1, t2, st);
         }
     }
 
@@ -36,12 +36,12 @@ public class NODE {
         return Number;
     }
 
-    public Pokemon findPokemon(int id){
+    public Pokemon findPoke(int id){
         if(Number == id) {
             return Poke;
         }
         else {
-            return next.findPokemon(id);
+            return next.findPoke(id);
         }
     }
 }
