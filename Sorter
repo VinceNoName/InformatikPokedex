@@ -2,6 +2,8 @@ public class Sorter {
     private Pokemon[] SortedList;
     private int j;
     private int k;
+    private boolean jb;
+    private boolean kb;
     private Pokemon[] TempList;
 
     public Sorter(){
@@ -9,6 +11,8 @@ public class Sorter {
         TempList = new Pokemon[150];
         j = 0;
         k = 0;
+        jb = false;
+        kb = false;
     }
 
     public Pokemon[] quicksort(int st) {
@@ -35,10 +39,71 @@ public class Sorter {
         k = 0;
         j = 0;
         if(((end-start)/2)-start > 1) {
+            jb = false;
             sort(start, (end-start)/2-1, stat);
-        }
+        } else {jb = true;}
+        
         if(end-((end-start)/2) > 1) {
+            kb = false;
             sort((end-start)/2+1, end, stat);
+        } else {kb = true;}
+
+        if(kb == true && jb == true) {
+            return SortedList[];
+        }
+    }
+}public class Sorter {
+    private Pokemon[] SortedList;
+    private int j;
+    private int k;
+    private boolean jb;
+    private boolean kb;
+    private Pokemon[] TempList;
+
+    public Sorter(){
+        SortedList = new Pokemon[150];
+        TempList = new Pokemon[150];
+        j = 0;
+        k = 0;
+        jb = false;
+        kb = false;
+    }
+
+    public Pokemon[] quicksort(int st) {
+        return sort(0, 150, st);
+    }
+    public Pokemon[] sort(int start, int end, int stat) {
+        compare = findPokemon((end-start)/2).giveStat(stat);
+        SortedList[j] = compare;
+        for(i=0;i<(end-start);i++) {
+            if(i != (end-start)/2) {    
+                if(findPokemon(i).giveStat(stat) < compare) {
+                    TempList[j] = findPokemon(i);
+                    j+=1;
+                    TempList[j] = compare;
+                }
+                else {
+                    k+=1;
+                    TempList[j+k] = findPokemon(i).giveStat(stat);
+                }
+            }    
+        }
+        System.arraycopy(TempList, 0, SortedList, start, Templist.length());
+        Arrays.fill(TempList, null)
+        k = 0;
+        j = 0;
+        if(((end-start)/2)-start > 1) {
+            jb = false;
+            sort(start, (end-start)/2-1, stat);
+        } else {jb = true;}
+        
+        if(end-((end-start)/2) > 1) {
+            kb = false;
+            sort((end-start)/2+1, end, stat);
+        } else {kb = true;}
+
+        if(kb == true && jb == true) {
+            return SortedList[];
         }
     }
 }
