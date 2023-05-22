@@ -1,9 +1,44 @@
 public class Sorter {
-    private int midBST = 345;
-    private int midHP = 60;
-    private int midATK = 70;
-    private int midDEF = 65;
-    private int midSATK = 70;
-    private int midSDEF = 70;
-    private int midSPD = 70;
+    private Pokemon[] SortedList;
+    private int j;
+    private int k;
+    private Pokemon[] TempList;
+
+    public Sorter(){
+        SortedList = new Pokemon[150];
+        TempList = new Pokemon[150];
+        j = 0;
+        k = 0;
+    }
+
+    public Pokemon[] quicksort(int st) {
+        return sort(0, 150, st);
+    }
+    public Pokemon[] sort(int start, int end, int stat) {
+        compare = findPokemon((end-start)/2).giveStat(stat);
+        SortedList[j] = compare;
+        for(i=0;i<(end-start);i++) {
+            if(i != (end-start)/2) {    
+                if(findPokemon(i).giveStat(stat) < compare) {
+                    TempList[j] = findPokemon(i);
+                    j+=1;
+                    TempList[j] = compare;
+                }
+                else {
+                    k+=1;
+                    TempList[j+k] = findPokemon(i).giveStat(stat);
+                }
+            }    
+        }
+        System.arraycopy(TempList, 0, SortedList, start, Templist.length());
+        Arrays.fill(TempList, null)
+        k = 0;
+        j = 0;
+        if(((end-start)/2)-start > 1) {
+            sort(start, (end-start)/2-1, stat);
+        }
+        if(end-((end-start)/2) > 1) {
+            sort((end-start)/2+1, end, stat);
+        }
+    }
 }
