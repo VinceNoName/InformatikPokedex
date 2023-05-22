@@ -2,7 +2,7 @@ public class POKEDEX {
 
     public NODE first;
     public int count;
-    public String [] Type = {"Normal", "Fire", "Water", "Grass", "Electric", "Ice", "Fighting", "Poison", "Ground", "Flying", "Psychic", "Bug", "Rock", "Ghost", "Dragon", "Dark", "Seel", "Fairy"}
+    public String [] Type = {"Normal", "Fire", "Water", "Grass", "Electric", "Ice", "Fighting", "Poison", "Ground", "Flying", "Psychic", "Bug", "Rock", "Ghost", "Dragon", "Dark", "Seel", "Fairy"};
     public int [] [] TypeChart = {{2,2,2,2,2,2,2,2,2,2,2,2,1,0,2,2,1,2},+  //Normal
                                   {2,1,1,2,4,4,2,2,2,2,2,4,1,2,1,2,4,2},+  //Fire
                                   {2,4,1,2,1,2,2,2,4,2,2,2,4,2,1,2,2,2},+  //Water
@@ -19,7 +19,7 @@ public class POKEDEX {
                                   {0,2,2,2,2,2,2,2,2,2,4,2,2,4,2,1,2,2},+  //Ghost
                                   {2,2,2,2,2,2,2,2,2,2,2,2,2,2,4,2,1,0},+  //Dragon
                                   {2,1,1,1,2,4,2,2,2,2,2,2,4,2,2,2,1,4},+  //Steel
-                                  {2,1,2,2,2,2,4,1,2,2,2,2,2,2,4,4,1,2}}   //Fairy
+                                  {2,1,2,2,2,2,4,1,2,2,2,2,2,2,4,4,1,2}};   //Fairy
                                   
     public void AddPokemon (int i, String n, int hp, int a, int d, int sa, int sd, int s, int t1, int t2, boolean st) { 
         first.AddPokemon (i, n, a, d, sa, sd, s, t1, t2, st);
@@ -33,5 +33,9 @@ public class POKEDEX {
 
     public int countPok (){
         return first.countPokemon();
+    }
+
+    public Pokemon FindPokemon(int id){
+        return first.FindPokemon(id);
     }
 }
