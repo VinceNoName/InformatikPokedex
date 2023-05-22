@@ -36,4 +36,12 @@ public class NODE {
         return Number;
     }
 
+    public Pokemon findPokemon(int id){
+        if(Number == id) {
+            return Poke;
+        }
+        else {
+            return next.findPokemon(id);
+        }
+    }
 }
