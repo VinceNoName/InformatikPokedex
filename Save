@@ -1,22 +1,26 @@
 import java.io.*;
 
 public class saving {
-    //public POKEDEX List;
+    public static POKEDEX Dex;
+    public static Pokemon POk;
+    public static NODE node;
+
 
     public static void main(String[] args) {
+        Dex = new POKEDEX(null);
         read();
     }
    
-    // public void save (int c){
-    //    String fileName = "Databank.txt";
-    //    for (int i = 0;i<POKEDEX.countPok();i++){
-    //        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
-    //             writer.write(POKEDEX.findPokemon(i));
-    //         } catch (IOException e) {
-    //             System.err.println("Error writing to file: " + e.getMessage());
-    //         }
-    //     }
-    // }
+     public void save (int c){
+        String fileName = "Databank.txt";
+        for (int i = 0;i<POKEDEX.countPok();i++){
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
+                 writer.write(" "); // need to add the pokemon data
+             } catch (IOException e) {
+                 System.err.println("Error writing to file: " + e.getMessage());
+             }
+         }
+     }
 
     public static void read (){
         String fileName = "DATABANK.txt";
@@ -30,7 +34,14 @@ public class saving {
                 int sattack = givesattack(Line);
                 int sdefense = givesdfense (Line);
                 int speed = givespeed(Line);
-                System.out.println(name+" "+HP+" "+attack+" "+defense+ " "+ sattack+ " "+ sdefense+ " "+speed);
+                int Type1 = giveType1(Line);
+                int Type2 = giveType2(Line);
+                boolean SecondType = true;
+                if (Type1 == Type2){
+                    SecondType = false;
+                }
+                //System.out.println(name+" "+HP+" "+attack+" "+defense+ " "+ sattack+ " "+ sdefense+ " "+speed);
+                DEX.AddPokemon(i, name, HP, attack, defense, sattack, sdefense, speed, Type1, Type2, SecondType);
             }
         } catch (IOException e) {
             System.err.println("Error reading file: " + e.getMessage());
@@ -143,6 +154,40 @@ public class saving {
 
     private static int StoI (String x){
         return Integer.parseInt(x);
+    }
+
+    private static int giveType1 (String Line){
+        int sattack = 0;
+        int j = 0;
+        int count = 0;
+        for (int i = 13; i<Line.length();i++){
+            if (Line.charAt(i) == ',' && count != 6){
+               j = i+2;
+               count++;
+            }
+            else if (Line.charAt(i) == ',' && count == 6){
+                sattack = StoI(Line.substring(j, i));
+                break;
+            }
+        }
+        return sattack;
+    }
+
+    private static int giveType2 (String Line){
+        int sattack = 0;
+        int j = 0;
+        int count = 0;
+        for (int i = 13; i<Line.length();i++){
+            if (Line.charAt(i) == ',' && count != 7){
+               j = i+2;
+               count++;
+            }
+            else if (Line.charAt(i) == ',' && count == 7){
+                sattack = StoI(Line.substring(j, i));
+                break;
+            }
+        }
+        return sattack;
     }
     
 }
