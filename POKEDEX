@@ -1,5 +1,3 @@
-package pokedexSystem;
-
 public class POKEDEX {
 	private Sorter sort;
 	private NODE first;
@@ -54,4 +52,4 @@ public class POKEDEX {
 	public Sorter getSort() {
 		return sort;
 	}
-	}
+}
