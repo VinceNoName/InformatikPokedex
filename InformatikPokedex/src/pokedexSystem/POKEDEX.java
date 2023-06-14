@@ -1,11 +1,11 @@
 package pokedexSystem;
 
 public class POKEDEX {
-    public Sorter sort;
-    public NODE first;
-    public int count;
-    public String [] Type = {"Normal", "Fire", "Water", "Grass", "Electric", "Ice", "Fighting", "Poison", "Ground", "Flying", "Psychic", "Bug", "Rock", "Ghost", "Dragon", "Dark", "Seel", "Fairy"};
-    public int [] [] TypeChart = {{2,2,2,2,2,2,2,2,2,2,2,2,1,0,2,2,1,2},  //Normal
+    private Sorter sort;
+    private NODE first;
+    private int count;
+    private String [] Type = {"Normal", "Fire", "Water", "Grass", "Electric", "Ice", "Fighting", "Poison", "Ground", "Flying", "Psychic", "Bug", "Rock", "Ghost", "Dragon", "Dark", "Seel", "Fairy"};
+    private int [] [] TypeChart = {{2,2,2,2,2,2,2,2,2,2,2,2,1,0,2,2,1,2},  //Normal
                                   {2,1,1,2,4,4,2,2,2,2,2,4,1,2,1,2,4,2},  //Fire
                                   {2,4,1,2,1,2,2,2,4,2,2,2,4,2,1,2,2,2},  //Water
                                   {2,2,4,1,1,2,2,2,0,4,2,2,2,2,1,2,2,2},  //Electric
@@ -25,13 +25,13 @@ public class POKEDEX {
                                   
     public POKEDEX(NODE n){
         first = n;
-        int count = 1;
+        count = 1;
         sort = new Sorter();
     }
                                   
     public void AddPokemon (int i, String n, int hp, int a, int d, int sa, int sd, int s, int t1, int t2, boolean st) { 
         first.AddPokemon (i, n, hp, a, d, sa, sd, s, t1, t2, st);
-        count ++;
+        count++;
     }
     
         
@@ -46,4 +46,12 @@ public class POKEDEX {
     public Pokemon findPokemon(int id){
         return first.findPoke(id);
     }
+
+	public int [] [] getTypeChart() {
+		return TypeChart;
+	}
+
+	public Sorter getSort() {
+		return sort;
+	}
 }

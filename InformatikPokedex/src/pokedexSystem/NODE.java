@@ -25,10 +25,6 @@ public class NODE {
         return Poke;
     }
 
-    public int countPokemon (){
-        return next.countPokemon()+1;
-    }
-
     public NODE giveNext(){
         return next;
     }

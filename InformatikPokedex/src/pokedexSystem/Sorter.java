@@ -4,8 +4,10 @@ public class Sorter {
     private Pokemon[] SortedList;
     private int j;
     private int k;
-    private boolean jb;
-    private boolean kb;
+    @SuppressWarnings("unused")
+	private boolean jb;
+    @SuppressWarnings("unused")
+	private boolean kb;
     private Pokemon[] TempList;
     private Pokemon[] TempList2;
 
