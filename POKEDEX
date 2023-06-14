@@ -38,7 +38,7 @@ public class POKEDEX {
     }
 
     public int countPok (){
-        return first.countPokemon();
+        return count;
     }
 
     public Pokemon findPokemon(int id){
