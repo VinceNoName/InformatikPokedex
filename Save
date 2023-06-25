@@ -36,7 +36,7 @@ public class saving {
                     SecondType = false;
                 }
                 //System.out.println(name+" "+HP+" "+attack+" "+defense+ " "+ sattack+ " "+ sdefense+ " "+speed);
-                DEX.AddPokemon(i+1, name, HP, attack, defense, sattack, sdefense, speed, Type1, Type2, SecondType);
+                DEX.AddPokemon(i+2, name, HP, attack, defense, sattack, sdefense, speed, Type1, Type2, SecondType);
             }
         } catch (IOException e) {
             System.err.println("Error reading file: " + e.getMessage());
