@@ -7,7 +7,7 @@ public class Main {
     
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		POk = new Pokemon (0, "bulbasaur", 45, 49, 49, 65, 65, 45, 4, 8, true);
+		POk = new Pokemon (1, "bulbasaur", 45, 49, 49, 65, 65, 45, 4, 8, true);
 		node = new NODE (null, POk);
 		Dex = new POKEDEX(node);
 		saving.read();
