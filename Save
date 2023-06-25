@@ -3,19 +3,12 @@ package Info;
 import java.io.*;
 
 public class saving {
-    public static POKEDEX Dex;
-    public static Pokemon POk;
-    public static NODE node;
+    public static POKEDEX DEX;
 
-
-    public static void main(String[] args) {
-        Dex = new POKEDEX(null);
-        read();
-    }
    
      public void save (int c){
         String fileName = "Databank.txt";
-        for (int i = 0;i<Dex.countPok();i++){
+        for (int i = 0;i<DEX.countPok();i++){
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
                  writer.write(" "); // need to add the pokemon data
              } catch (IOException e) {
@@ -43,7 +36,7 @@ public class saving {
                     SecondType = false;
                 }
                 //System.out.println(name+" "+HP+" "+attack+" "+defense+ " "+ sattack+ " "+ sdefense+ " "+speed);
-                Dex.AddPokemon(i, name, HP, attack, defense, sattack, sdefense, speed, Type1, Type2, SecondType);
+                DEX.AddPokemon(i+1, name, HP, attack, defense, sattack, sdefense, speed, Type1, Type2, SecondType);
             }
         } catch (IOException e) {
             System.err.println("Error reading file: " + e.getMessage());
@@ -67,7 +60,6 @@ public class saving {
                j = i+1;
             }
             else if (Line.charAt(i) == ',' ){
-            	System.out.print(Line.substring(j, i));
                 hp = StoI(Line.substring(j, i));
                 break;
             }
@@ -84,8 +76,7 @@ public class saving {
                j=i+1;
                count++;
             }
-            else if (Line.charAt(i) == ',' && count == 2){
-            	System.out.print(Line.substring(j, i));
+            else if (Line.charAt(i) == ',' && count == 2){            	
             	attack = StoI(Line.substring(j, i));
                 break;
             }
