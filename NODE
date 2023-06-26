@@ -46,5 +46,6 @@ public class NODE {
     		return null;
     	}
     }
+//Es fehlt Ivysaur, Bubasaur ist numer 1, rest invertiert
     // THIS SHIT DOESNT FUCKING WORK; FIX IT BTICHHGHSDHJGSJKHJKSDJK
 }
