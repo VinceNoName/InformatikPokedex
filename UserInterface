@@ -58,7 +58,7 @@ public class UserInterface {
 		return AtrList;
 	}
 	
-	private static void Frame(){
+	private static void Frame() {
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		double width = screenSize.getWidth();
 		double height = screenSize.getHeight();
@@ -85,39 +85,39 @@ public class UserInterface {
 		
 		JList pokelist = new JList(NumberList());
 		
-//		JList namelist = new JList(AttributeList("Name", PDex.PokeArray()));
-//		JList hplist = new JList(AttributeList("HP", PDex.PokeArray()));
-//		JList atklist = new JList(AttributeList("ATK", PDex.PokeArray()));
-//		JList deflist = new JList(AttributeList("DEF", PDex.PokeArray()));
-//		JList satklist = new JList(AttributeList("SP-ATK", PDex.PokeArray()));
-//		JList sdeflist = new JList(AttributeList("SP-DEF", PDex.PokeArray()));
-//		JList spdlist = new JList(AttributeList("SPD", PDex.PokeArray()));
+		JList namelist = new JList(AttributeList("Name", PDex.PokeArray()));
+		JList hplist = new JList(AttributeList("HP", PDex.PokeArray()));
+		JList atklist = new JList(AttributeList("ATK", PDex.PokeArray()));
+		JList deflist = new JList(AttributeList("DEF", PDex.PokeArray()));
+		JList satklist = new JList(AttributeList("SP-ATK", PDex.PokeArray()));
+		JList sdeflist = new JList(AttributeList("SP-DEF", PDex.PokeArray()));
+		JList spdlist = new JList(AttributeList("SPD", PDex.PokeArray()));
 //		
-//		JTextField searchbar = new JTextField(null, (int) Math.round(((0.26*width)-335)/11));
-//		frame.setVisible(true);
-//		leftpanel.add(BorderLayout.WEST, parameters);
-//		leftpanel.add(BorderLayout.CENTER, group);
-//		leftpanel.add(BorderLayout.EAST, sort);
-//		panel.add(BorderLayout.LINE_START, leftpanel);
-//		panel.add(BorderLayout.CENTER, searchbar);
-//		panel.add(BorderLayout.LINE_END, search);
-//		listpanel.add(BorderLayout.LINE_START, pokelist);
-//		listpanel.add(BorderLayout.CENTER, listpanel1);
-//		listpanel.add(BorderLayout.EAST, listpanel2);
-//		listpanel1.add(BorderLayout.WEST, namelist);
-//		listpanel1.add(BorderLayout.CENTER, hplist);
-//		listpanel1.add(BorderLayout.EAST, atklist);
-//		listpanel2.add(BorderLayout.WEST, deflist);
-//		listpanel2.add(BorderLayout.CENTER, satklist);
-//		listpanel2.add(BorderLayout.EAST, listpanel3);
-//		listpanel3.add(BorderLayout.WEST, sdeflist);
-//		listpanel3.add(BorderLayout.CENTER, spdlist);		
+		JTextField searchbar = new JTextField(null, (int) Math.round(((0.26*width)-335)/11));
+		frame.setVisible(true);
+		leftpanel.add(BorderLayout.WEST, parameters);
+		leftpanel.add(BorderLayout.CENTER, group);
+		leftpanel.add(BorderLayout.EAST, sort);
+		panel.add(BorderLayout.LINE_START, leftpanel);
+		panel.add(BorderLayout.CENTER, searchbar);
+		panel.add(BorderLayout.LINE_END, search);
+		listpanel.add(BorderLayout.LINE_START, pokelist);
+		listpanel.add(BorderLayout.CENTER, listpanel1);
+		listpanel.add(BorderLayout.EAST, listpanel2);
+		listpanel1.add(BorderLayout.WEST, namelist);
+		listpanel1.add(BorderLayout.CENTER, hplist);
+		listpanel1.add(BorderLayout.EAST, atklist);
+		listpanel2.add(BorderLayout.WEST, deflist);
+		listpanel2.add(BorderLayout.CENTER, satklist);
+		listpanel2.add(BorderLayout.EAST, listpanel3);
+		listpanel3.add(BorderLayout.WEST, sdeflist);
+		listpanel3.add(BorderLayout.CENTER, spdlist);		
 
 		
 		frame.add(BorderLayout.PAGE_START, panel);
 		frame.add(BorderLayout.LINE_START, scroll);
+		
 	}
-
 }
 
 
