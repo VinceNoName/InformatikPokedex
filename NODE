@@ -40,4 +40,15 @@ public class NODE {
             return next.findPoke(id);
         }
     }
+    
+    public Pokemon ArrayFill(int j, Pokemon[] pka) {
+    	if(next != null && j <= 150) {
+    		j+=1;
+    		pka[j] = next.ArrayFill(j, pka);
+    		return Poke;
+    	}
+    	else {
+    		return null;
+    	}
+    }
 }
