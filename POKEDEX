@@ -64,4 +64,10 @@ public class POKEDEX {
 	public Sorter getSort() {
 		return sort;
 	}
+	
+	public Pokemon[] PokeArray() {
+		Pokemon[] PkAry = new Pokemon[151];
+		PkAry[0] = first.ArrayFill(0, PkAry);
+		return PkAry;
+	}
 }
