@@ -1,0 +1,65 @@
+import java.awt.*;
+import javax.swing.*;
+import java.util.stream.IntStream;
+
+public class UserInterface {
+	private static POKEDEX PDex;
+
+	public UserInterface(POKEDEX dex){
+		PDex = dex;
+		Frame();
+	}
+	
+	private static String[] NumberList() {
+		int intAry[] = IntStream.range(1,152).toArray();
+        String[] strArray = new String[intAry.length];
+        
+        for (int i = 0; i < intAry.length; i++) {
+            strArray[i] = String.valueOf(intAry[i]);
+        }
+        return strArray;
+	}
+	
+	private static void Frame(){
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		double width = screenSize.getWidth();
+		double height = screenSize.getHeight();
+		
+		JFrame frame = new JFrame("Pokédex");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize((int) Math.round(width*0.26),(int) Math.round(height*0.8));
+		frame.setResizable(false);
+		JPanel panel = new JPanel();
+		JPanel leftpanel = new JPanel();
+		JPanel listpanel = new JPanel();
+		
+		JScrollPane scroll = new JScrollPane(listpanel);
+		
+		JButton search = new JButton("OK");
+		JButton sort = new JButton("Sort");
+		JButton group = new JButton("Group");
+		
+		String[] ParaList = {"----", "Name", "HP", "ATK", "DEF", "SPZ.-ATK", "SPZ.-DEF", "SPD"};
+		JComboBox parameters = new JComboBox(ParaList);
+		
+		JList pokelist = new JList(NumberList());
+		
+//		JList namelist = new JList(PDex.PokeArray().map(Pokemon => Pokemon.giveName()));
+		
+		JTextField searchbar = new JTextField(null, (int) Math.round(((0.26*width)-335)/11));
+		frame.setVisible(true);
+		leftpanel.add(BorderLayout.WEST, parameters);
+		leftpanel.add(BorderLayout.CENTER, group);
+		leftpanel.add(BorderLayout.EAST, sort);
+		panel.add(BorderLayout.LINE_START, leftpanel);
+		panel.add(BorderLayout.CENTER, searchbar);
+		panel.add(BorderLayout.LINE_END, search);
+		listpanel.add(BorderLayout.LINE_START, pokelist);
+		
+		frame.add(BorderLayout.PAGE_START, panel);
+		frame.add(BorderLayout.LINE_START, scroll);
+	}
+
+}
+
+
