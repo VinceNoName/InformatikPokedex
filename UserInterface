@@ -1,3 +1,5 @@
+package pokedexSystem;
+
 import java.awt.*;
 import javax.swing.*;
 import java.util.stream.IntStream;
@@ -20,6 +22,42 @@ public class UserInterface {
         return strArray;
 	}
 	
+	private static String[] AttributeList(String a, Pokemon[] ary) {
+		String AtrList[] = new String[150];
+		
+		switch(a) {
+		case "Name":
+			for(int i = 0; i < 151; i++) {
+				AtrList[i] = ary[i].giveName();
+			}
+		case "HP":
+			for(int i = 0; i < 151; i++) {
+				AtrList[i] = Integer.toString(ary[i].giveStat(0));
+			}
+		case "ATK":
+			for(int i = 0; i < 151; i++) {
+				AtrList[i] = Integer.toString(ary[i].giveStat(1));
+			}
+		case "DEF":
+			for(int i = 0; i < 151; i++) {
+				AtrList[i] = Integer.toString(ary[i].giveStat(2));
+			}
+		case "SP-ATK":
+			for(int i = 0; i < 151; i++) {
+				AtrList[i] = Integer.toString(ary[i].giveStat(3));
+			}
+		case "SP-DEF":
+			for(int i = 0; i < 151; i++) {
+				AtrList[i] = Integer.toString(ary[i].giveStat(4));
+			}
+		case "SPD":
+			for(int i = 0; i < 151; i++) {
+				AtrList[i] = Integer.toString(ary[i].giveStat(5));
+			}
+		}
+		return AtrList;
+	}
+	
 	private static void Frame(){
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		double width = screenSize.getWidth();
@@ -32,6 +70,9 @@ public class UserInterface {
 		JPanel panel = new JPanel();
 		JPanel leftpanel = new JPanel();
 		JPanel listpanel = new JPanel();
+		JPanel listpanel1 = new JPanel();
+		JPanel listpanel2 = new JPanel();
+		JPanel listpanel3 = new JPanel();
 		
 		JScrollPane scroll = new JScrollPane(listpanel);
 		
@@ -39,22 +80,39 @@ public class UserInterface {
 		JButton sort = new JButton("Sort");
 		JButton group = new JButton("Group");
 		
-		String[] ParaList = {"----", "Name", "HP", "ATK", "DEF", "SPZ.-ATK", "SPZ.-DEF", "SPD"};
+		String[] ParaList = {"----", "Name", "HP", "ATK", "DEF", "SP-ATK", "SP-DEF", "SPD"};
 		JComboBox parameters = new JComboBox(ParaList);
 		
 		JList pokelist = new JList(NumberList());
 		
-//		JList namelist = new JList(PDex.PokeArray().map(Pokemon => Pokemon.giveName()));
-		
-		JTextField searchbar = new JTextField(null, (int) Math.round(((0.26*width)-335)/11));
-		frame.setVisible(true);
-		leftpanel.add(BorderLayout.WEST, parameters);
-		leftpanel.add(BorderLayout.CENTER, group);
-		leftpanel.add(BorderLayout.EAST, sort);
-		panel.add(BorderLayout.LINE_START, leftpanel);
-		panel.add(BorderLayout.CENTER, searchbar);
-		panel.add(BorderLayout.LINE_END, search);
-		listpanel.add(BorderLayout.LINE_START, pokelist);
+//		JList namelist = new JList(AttributeList("Name", PDex.PokeArray()));
+//		JList hplist = new JList(AttributeList("HP", PDex.PokeArray()));
+//		JList atklist = new JList(AttributeList("ATK", PDex.PokeArray()));
+//		JList deflist = new JList(AttributeList("DEF", PDex.PokeArray()));
+//		JList satklist = new JList(AttributeList("SP-ATK", PDex.PokeArray()));
+//		JList sdeflist = new JList(AttributeList("SP-DEF", PDex.PokeArray()));
+//		JList spdlist = new JList(AttributeList("SPD", PDex.PokeArray()));
+//		
+//		JTextField searchbar = new JTextField(null, (int) Math.round(((0.26*width)-335)/11));
+//		frame.setVisible(true);
+//		leftpanel.add(BorderLayout.WEST, parameters);
+//		leftpanel.add(BorderLayout.CENTER, group);
+//		leftpanel.add(BorderLayout.EAST, sort);
+//		panel.add(BorderLayout.LINE_START, leftpanel);
+//		panel.add(BorderLayout.CENTER, searchbar);
+//		panel.add(BorderLayout.LINE_END, search);
+//		listpanel.add(BorderLayout.LINE_START, pokelist);
+//		listpanel.add(BorderLayout.CENTER, listpanel1);
+//		listpanel.add(BorderLayout.EAST, listpanel2);
+//		listpanel1.add(BorderLayout.WEST, namelist);
+//		listpanel1.add(BorderLayout.CENTER, hplist);
+//		listpanel1.add(BorderLayout.EAST, atklist);
+//		listpanel2.add(BorderLayout.WEST, deflist);
+//		listpanel2.add(BorderLayout.CENTER, satklist);
+//		listpanel2.add(BorderLayout.EAST, listpanel3);
+//		listpanel3.add(BorderLayout.WEST, sdeflist);
+//		listpanel3.add(BorderLayout.CENTER, spdlist);		
+
 		
 		frame.add(BorderLayout.PAGE_START, panel);
 		frame.add(BorderLayout.LINE_START, scroll);
