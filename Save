@@ -1,11 +1,16 @@
 package Info;
 
+package pokedexSystem;
+
 import java.io.*;
 
 public class saving {
     public static POKEDEX DEX;
 
-   
+    public saving(POKEDEX deX) {
+    	DEX = deX;
+    }
+    
      public void save (int c){
         String fileName = "Databank.txt";
         for (int i = 0;i<DEX.countPok();i++){
