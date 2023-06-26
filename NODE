@@ -1,5 +1,4 @@
-package Info;
-
+package pokedexSystem;
 public class NODE {
     private NODE next;
     private Pokemon Poke;
@@ -13,6 +12,7 @@ public class NODE {
             NODE tempnext = next;
             Pokemon Pke = new Pokemon(i, n, hp, a, d, sa, sd, s, t1, t2, st);
             next = new NODE(tempnext, Pke);
+            System.out.println(Pke.giveName());
     }
 
     public Pokemon PokemonGeben() {
@@ -24,11 +24,11 @@ public class NODE {
     }
 
     public int giveNr(){
-        return Poke.giveID ;
+        return Poke.giveID();
     }
 
     public Pokemon findPoke(int id){
-        if(Number == id) {
+        if(giveNr() == id) {
             return Poke;
         }
         else {
@@ -37,7 +37,7 @@ public class NODE {
     }
     
     public Pokemon ArrayFill(int j, Pokemon[] pka) {
-    	if(next != null && j <= 150) {
+    	if(next != null && j <= 151) {
     		j+=1;
     		pka[j] = next.ArrayFill(j, pka);
     		return Poke;
@@ -46,4 +46,5 @@ public class NODE {
     		return null;
     	}
     }
+    // THIS SHIT DOESNT FUCKING WORK; FIX IT BTICHHGHSDHJGSJKHJKSDJK
 }
