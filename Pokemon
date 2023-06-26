@@ -1,3 +1,4 @@
+package pokedexSystem;
 public class Pokemon {
     private int ID;
     private String Name;
