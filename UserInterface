@@ -93,13 +93,11 @@ public class UserInterface {
 	
 	private static void Frame() {
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		double width = screenSize.getWidth();
-		double height = screenSize.getHeight();
 		
 //		Fenster wird erstellt
 		JFrame frame = new JFrame("Pokédex");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize((int) Math.round(width*0.26),(int) Math.round(height*0.8));
+		frame.setSize((int) Math.round(457),(int) Math.round(740));
 		frame.setResizable(false);
 		
 //		Display-felder werden erstellt
@@ -115,7 +113,6 @@ public class UserInterface {
 //		Knöpfe werden erstellt
 		JButton search = new JButton("OK");
 		JButton sort = new JButton("Sort");
-		JButton group = new JButton("Group");
 
 //		Sortierparameter-Auswahlbox wird erstellt
 		String[] ParaList = {"----", "Name", "HP", "ATK", "DEF", "SP-ATK", "SP-DEF", "SPD"};
@@ -142,7 +139,6 @@ public class UserInterface {
 //		Display-felder werden gefüllt
 		// Obere Leiste
 		leftpanel.add(BorderLayout.WEST, parameters);
-		leftpanel.add(BorderLayout.CENTER, group);
 		leftpanel.add(BorderLayout.EAST, sort);
 		panel.add(BorderLayout.LINE_START, leftpanel);
 		panel.add(BorderLayout.CENTER, searchbar);
@@ -165,7 +161,7 @@ public class UserInterface {
 		
 //		Display-felder werden ins Fenster eingefügt
 		frame.add(BorderLayout.PAGE_START, panel);
-		frame.add(BorderLayout.LINE_START, scroll);
+		frame.add(BorderLayout.CENTER, scroll);
 		
 	}
 }
