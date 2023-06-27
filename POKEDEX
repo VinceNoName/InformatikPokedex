@@ -1,10 +1,11 @@
 package pokedexSystem;
 
-public class POKEDEX {			//stellt den Graph dar, welcher die Typen relationen darstellt, also stark/schwach
+public class POKEDEX {			//stellt den Graph dar
 	private Sorter sort;
 	private NODE first;
 	private int count;
 	private String [] Type = {"Normal", "Fire", "Water", "Grass", "Electric", "Ice", "Fighting", "Poison", "Ground", "Flying", "Psychic", "Bug", "Rock", "Ghost", "Dragon", "Dark", "Steel", "Fairy"};
+	// Matrix, die Typenrelationen darstellt, also stark/schwach
 	private int [] [] TypeChart = {{2,2,2,2,2,2,2,2,2,2,2,2,1,0,2,2,1,2},  //Normal
 			{2,1,1,2,4,4,2,2,2,2,2,4,1,2,1,2,4,2},  //Fire
 			{2,4,1,2,1,2,2,2,4,2,2,2,4,2,1,2,2,2},  //Water
@@ -33,7 +34,7 @@ public class POKEDEX {			//stellt den Graph dar, welcher die Typen relationen da
 	}
 
 
-	public POKEDEX(NODE n){		//Erzeugt die Erste Node
+	public POKEDEX(NODE n){		//Konstruktor: Erzeugt die Erste Node
 		first = n;
 		count = 1;
 		sort = new Sorter();
@@ -45,7 +46,7 @@ public class POKEDEX {			//stellt den Graph dar, welcher die Typen relationen da
 	}
 
 
-	public String giveTypeName(int t){	//gibt den Typennamen aus
+	public String giveTypeName(int t){	//gibt den Namen eines Typen aus
 		return Type[t];
 	}
 
@@ -57,21 +58,21 @@ public class POKEDEX {			//stellt den Graph dar, welcher die Typen relationen da
 		return first.findPoke(id);
 	}
 
-	public int [] [] getTypeChart() {	//besorgt den Typen
+	public int [] [] getTypeChart() {	//besorgt die Typen-Matrix
 		return TypeChart;
 	}
 
-	public Sorter getSort() {		//gibt das sortierte aus
+	public Sorter getSort() {		// gibt den Sortierer aus 
 		return sort;
 	}
 	
-	public Pokemon[] PokeArray() {			//Erstellt das Array aus den 151 Pokemon
+	public Pokemon[] PokeArray() {			//Erstellt ein Array aus den 151 Pokemon
 		Pokemon[] PkAry = new Pokemon[151];
 		PkAry[0] = first.ArrayFill(0, PkAry);
 		return PkAry;
 	}
 	
-	public void printAll() {			//gibt alles aus
+	public void printAll() {			//gibt alle pokemon namen aus
 		first.printAll();
 	}
 	
