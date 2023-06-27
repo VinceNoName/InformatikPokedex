@@ -1,6 +1,6 @@
 package pokedexSystem;
 
-public class Main {
+public class Main {			//Hauptklasse des Codes, wird autmatisch ausgeführt und startet die anderen Methoden
 	public static POKEDEX Dex;
     public static Pokemon POk;
     public static NODE node;
