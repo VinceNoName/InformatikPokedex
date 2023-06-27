@@ -9,14 +9,13 @@ public class Main {			//Hauptklasse des Codes, wird autmatisch ausgeführt und s
 
     
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		POk = new Pokemon (1, "Bulbasaur", 45, 49, 49, 65, 65, 45, 3, 7, true);
 		node = new NODE (null, POk);
 		Dex = new POKEDEX(node);
 		Save = new saving(Dex);
 		saving.read();
 		Dex.printAll();
-		UI = new UserInterface(Dex);	
+		UI = new UserInterface(Dex);
 	}
 
 }
