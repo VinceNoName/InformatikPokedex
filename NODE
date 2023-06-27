@@ -3,12 +3,12 @@ public class NODE {
     private NODE next;
     private Pokemon Poke;
     
-    public NODE (NODE nex, Pokemon Pok){
+    public NODE (NODE nex, Pokemon Pok){        //geht die Knoten durch, welche die Daten enthalten
         next = nex;
         Poke = Pok;
     }
 
-    public void AddPokemon (int i, String n, int hp, int a, int d, int sa, int sd, int s, int t1, int t2, boolean st) { 
+    public void AddPokemon (int i, String n, int hp, int a, int d, int sa, int sd, int s, int t1, int t2, boolean st) { //besorgt sich die Attribute der Pokemon
     	if(next == null) {
     		NODE tempnext = next;
             Pokemon Pke = new Pokemon(i, n, hp, a, d, sa, sd, s, t1, t2, st);
@@ -36,7 +36,7 @@ public class NODE {
         return Poke.giveID();
     }
 
-    public Pokemon findPoke(int id){
+    public Pokemon findPoke(int id){        //Suche Nach einem bestimmten Pokemon nach Pokedex nummer
         if(giveNr() == id) {
             return Poke;
         }
@@ -45,14 +45,14 @@ public class NODE {
         }
     }
     
-    public void printAll() {
+    public void printAll() {                    //gibt alle Pokemon aus
     	System.out.println(Poke.giveName());
     	if(next != null) {
     		next.printAll();
     	}
     }
     
-    public Pokemon ArrayFill(int j, Pokemon[] pka) {
+    public Pokemon ArrayFill(int j, Pokemon[] pka) {        //für die Pokemon in das Array ein
     	if(next != null && j <= 151) {
     		j+=1;
     		pka[j] = next.ArrayFill(j, pka);
@@ -62,7 +62,4 @@ public class NODE {
     		return Poke;
     	}
     }
-     
-//Es fehlt Ivysaur, Bubasaur ist numer 1, rest invertiert
-    // THIS SHIT DOESNT FUCKING WORK; FIX IT BTICHHGHSDHJGSJKHJKSDJK
 }
