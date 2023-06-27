@@ -10,18 +10,8 @@ public class saving {
     public saving(POKEDEX deX) {
     	DEX = deX;
     }
-    
-     public void save (int c){
-        String fileName = "Databank.txt";
-        for (int i = 0;i<DEX.countPok();i++){
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
-                 writer.write(" "); // need to add the pokemon data
-             } catch (IOException e) {
-                 System.err.println("Error writing to file: " + e.getMessage());
-             }
-         }
-     }
 
+//List das Textdocument mit den gespeicherten Pokemon ein, und fügt diese zu dem Programm hinzu
     public static void read (){
         String fileName = "DATABANK.txt";
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
@@ -47,6 +37,8 @@ public class saving {
             System.err.println("Error reading file: " + e.getMessage());
         }
     }
+
+//gibt den Substring, der den Namen des Pokemons beinhaltet
     private static String givename(String Line){
         for (int i = 0;i<Line.length();i++){
             if (Line.charAt(i) == ','){
@@ -72,6 +64,7 @@ public class saving {
         return hp;
     }
 
+//gibt den Substring, der den Angriffswert des Pokemons beinhaltet
     private static int giveattack (String Line){
     	int attack = 0;
         int j = 0;
@@ -89,6 +82,7 @@ public class saving {
         return attack;
     }
 
+//gibt den Substring, der den Verteidigungswert des Pokemons beinhaltet
     private static int givedefense (String Line){
         int defense = 0;
         int j = 0;
@@ -106,6 +100,7 @@ public class saving {
         return defense;
     }
 
+//gibt den Substring, der den Special Angriffswert des Pokemons beinhaltet
     private static int givesattack (String Line){
         int sattack = 0;
         int j = 0;
@@ -123,6 +118,7 @@ public class saving {
         return sattack;
     }
 
+//gibt den Substring, der den Special Verteidigungswert des Pokemons beinhaltet
     private static int givesdfense (String Line){
         int sdefsense = 0;
         int j = 0;
@@ -140,6 +136,7 @@ public class saving {
         return sdefsense;
     }
 
+//gibt den Substring, der den Geschwindigkeitswert des Pokemons beinhaltet
     private static int givespeed (String Line){
         int speed = 0;
         int j = 0;
@@ -157,10 +154,12 @@ public class saving {
         return speed;
     }
 
+//Wandelt einen String in einen Intager wert um
     private static int StoI (String x){
         return Integer.parseInt(x);
     }
 
+//gibt den Substring, der den Ersten Typ des Pokemons beinhaltet
     private static int giveType1 (String Line){
         int sattack = 0;
         int j = 0;
@@ -178,6 +177,7 @@ public class saving {
         return sattack;
     }
 
+//gibt den Substring, der den Zweiten Typ des Pokemons beinhaltet
     private static int giveType2 (String Line){
         int sattack = 0;
         int j = 0;
