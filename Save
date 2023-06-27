@@ -4,9 +4,11 @@ package pokedexSystem;
 
 import java.io.*;
 
+//List das Textdocument mit den gespeicherten Pokemon ein, und fügt diese zu dem Programm hinzu
 public class saving {
     public static POKEDEX DEX;
 
+//construktor für einen Object der classe saving
     public saving(POKEDEX deX) {
     	DEX = deX;
     }
