@@ -1,16 +1,24 @@
 package pokedexSystem;
 
 import java.awt.*;
+import java.awt.event.*;
+import java.util.*;
+
 import javax.swing.*;
 import java.util.stream.IntStream;
 
 public class UserInterface {
 	private static POKEDEX PDex;
+	private static JFrame frame;
+	private static int Stat;
+	private static Pokemon PkAry[];
 
 	public UserInterface(POKEDEX dex){
 		PDex = dex;
+		frame = new JFrame("Pokédex");
 		Frame();
 	}
+	
 	
 	// Erstellt ein String-Array mit Nummern von 1 bis 151
 	private static String[] NumberList() {
@@ -34,6 +42,7 @@ public class UserInterface {
 		String SPDList[] = new String[151];
 		String TypeList[] = new String[151];
 		String Type2List[] = new String[151];
+		String IDList[] = new String[151];
 		
 		switch(a) {
 		case "Name":
@@ -86,6 +95,11 @@ public class UserInterface {
 				}
 			}
 			return Type2List;
+		case "ID":
+			for(int i = 0; i < 151; i++) {
+				IDList[i] = Integer.toString(ary[i].giveStat(6));
+			}
+			return IDList;
 		default:
 			return null;
 		}
@@ -96,8 +110,7 @@ public class UserInterface {
 		double width = screenSize.getWidth();
 		double height = screenSize.getHeight();
 		
-//		Fenster wird erstellt
-		JFrame frame = new JFrame("Pokédex");
+//		Fenster wird eingestellt
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize((int) Math.round(457),(int) Math.round(740));
 		frame.setResizable(false);
@@ -112,14 +125,8 @@ public class UserInterface {
 		JPanel listpanel4 = new JPanel();
 		JScrollPane scroll = new JScrollPane(listpanel);
 		
-//		Knöpfe werden erstellt
-		JButton search = new JButton("OK");
-		JButton sort = new JButton("Sort");
 
-//		Sortierparameter-Auswahlbox wird erstellt
-		String[] ParaList = {"----", "Name", "HP", "ATK", "DEF", "SP-ATK", "SP-DEF", "SPD"};
-		JComboBox parameters = new JComboBox(ParaList);
-		
+
 		
 //		Listen von Attributen werden erstellt
 		JList pokelist = new JList(NumberList());
@@ -133,6 +140,68 @@ public class UserInterface {
 		JList spdlist = new JList(AttributeList("SPD", PDex.PokeArray()));
 		JList typelist = new JList(AttributeList("TYPE", PDex.PokeArray()));
 		JList type2list = new JList(AttributeList("TYPE2", PDex.PokeArray()));
+		
+//		Sortierparameter-Auswahlbox wird erstellt
+		String[] ParaList = {"HP", "ATK", "DEF", "SP-ATK", "SP-DEF", "SPD","ID"};
+		JComboBox parameters = new JComboBox(ParaList);
+		parameters.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				//Auswahl wird registriert
+				String ent = e.getItem().toString();
+				Stat = Arrays.asList(ParaList).indexOf(ent);
+				
+			}
+
+		});
+		
+//		Knöpfe werden erstellt
+		JButton search = new JButton("OK");
+		JButton sort = new JButton("Sort");
+		sort.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PkAry = PDex.PokeArray();
+				if(Stat < 6) {
+					// Array with sortiert
+					PDex.getSort().quickSort(PkAry, Stat, 0, 150);
+					Collections.reverse(Arrays.asList(PkAry));
+				}
+				// Arrays werden neu eingefügt
+				JList pokelist = new JList(AttributeList("ID", PkAry));				
+				JList namelist = new JList(AttributeList("Name", PkAry));
+				JList hplist = new JList(AttributeList("HP", PkAry));
+				JList atklist = new JList(AttributeList("ATK", PkAry));
+				JList deflist = new JList(AttributeList("DEF", PkAry));
+				JList satklist = new JList(AttributeList("SP-ATK", PkAry));
+				JList sdeflist = new JList(AttributeList("SP-DEF", PkAry));
+				JList spdlist = new JList(AttributeList("SPD", PkAry));
+				JList typelist = new JList(AttributeList("TYPE", PkAry));
+				JList type2list = new JList(AttributeList("TYPE2", PkAry));
+				
+				listpanel.removeAll();
+				listpanel1.removeAll();
+				listpanel2.removeAll();
+				listpanel3.removeAll();
+				listpanel4.removeAll();
+				
+				listpanel.add(BorderLayout.LINE_START, pokelist);
+				listpanel.add(BorderLayout.CENTER, listpanel1);
+				listpanel.add(BorderLayout.EAST, listpanel2);
+				listpanel1.add(BorderLayout.WEST, namelist);
+				listpanel1.add(BorderLayout.CENTER, hplist);
+				listpanel1.add(BorderLayout.EAST, atklist);
+				listpanel2.add(BorderLayout.WEST, deflist);
+				listpanel2.add(BorderLayout.CENTER, satklist);
+				listpanel2.add(BorderLayout.EAST, listpanel3);
+				listpanel3.add(BorderLayout.WEST, sdeflist);
+				listpanel3.add(BorderLayout.CENTER, listpanel4);
+				listpanel4.add(BorderLayout.WEST, spdlist);
+				listpanel4.add(BorderLayout.CENTER, typelist);
+				listpanel4.add(BorderLayout.EAST, type2list);
+				SwingUtilities.updateComponentTreeUI(frame);
+
+			}
+
+		});
 		
 //		Suchleiste wird erstellt
 		JTextField searchbar = new JTextField(null, (int) Math.round(((0.26*width)-335)/11));
@@ -165,5 +234,9 @@ public class UserInterface {
 		frame.add(BorderLayout.PAGE_START, panel);
 		frame.add(BorderLayout.CENTER, scroll);
 		
+	}
+	
+	public static void close() {
+		frame.dispose();
 	}
 }
