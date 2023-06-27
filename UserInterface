@@ -12,6 +12,7 @@ public class UserInterface {
 		Frame();
 	}
 	
+	// Erstellt ein String-Array mit Nummern von 1 bis 151
 	private static String[] NumberList() {
 		int intAry[] = IntStream.range(1,152).toArray();
         String[] strArray = new String[intAry.length];
@@ -22,6 +23,7 @@ public class UserInterface {
         return strArray;
 	}
 	
+	// Erstellt eine String-Array von allen Attributen und gibt diese aus
 	private static String[] AttributeList(String a, Pokemon[] ary) {
 		String NameList[] = new String[151];
 		String HPList[] = new String[151];
@@ -94,10 +96,13 @@ public class UserInterface {
 		double width = screenSize.getWidth();
 		double height = screenSize.getHeight();
 		
+//		Fenster wird erstellt
 		JFrame frame = new JFrame("Pokédex");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize((int) Math.round(width*0.26),(int) Math.round(height*0.8));
 		frame.setResizable(false);
+		
+//		Display-felder werden erstellt
 		JPanel panel = new JPanel();
 		JPanel leftpanel = new JPanel();
 		JPanel listpanel = new JPanel();
@@ -105,16 +110,19 @@ public class UserInterface {
 		JPanel listpanel2 = new JPanel();
 		JPanel listpanel3 = new JPanel();
 		JPanel listpanel4 = new JPanel();
-		
 		JScrollPane scroll = new JScrollPane(listpanel);
 		
+//		Knöpfe werden erstellt
 		JButton search = new JButton("OK");
 		JButton sort = new JButton("Sort");
 		JButton group = new JButton("Group");
-		
+
+//		Sortierparameter-Auswahlbox wird erstellt
 		String[] ParaList = {"----", "Name", "HP", "ATK", "DEF", "SP-ATK", "SP-DEF", "SPD"};
 		JComboBox parameters = new JComboBox(ParaList);
 		
+		
+//		Listen von Attributen werden erstellt
 		JList pokelist = new JList(NumberList());
 		
 		JList namelist = new JList(AttributeList("Name", PDex.PokeArray()));
@@ -126,15 +134,20 @@ public class UserInterface {
 		JList spdlist = new JList(AttributeList("SPD", PDex.PokeArray()));
 		JList typelist = new JList(AttributeList("TYPE", PDex.PokeArray()));
 		JList type2list = new JList(AttributeList("TYPE2", PDex.PokeArray()));
-//		
+		
+//		Suchleiste wird erstellt
 		JTextField searchbar = new JTextField(null, (int) Math.round(((0.26*width)-335)/11));
 		frame.setVisible(true);
+		
+//		Display-felder werden gefüllt
+		// Obere Leiste
 		leftpanel.add(BorderLayout.WEST, parameters);
 		leftpanel.add(BorderLayout.CENTER, group);
 		leftpanel.add(BorderLayout.EAST, sort);
 		panel.add(BorderLayout.LINE_START, leftpanel);
 		panel.add(BorderLayout.CENTER, searchbar);
 		panel.add(BorderLayout.LINE_END, search);
+		// Pokemon Liste
 		listpanel.add(BorderLayout.LINE_START, pokelist);
 		listpanel.add(BorderLayout.CENTER, listpanel1);
 		listpanel.add(BorderLayout.EAST, listpanel2);
@@ -150,6 +163,7 @@ public class UserInterface {
 		listpanel4.add(BorderLayout.CENTER, typelist);
 		listpanel4.add(BorderLayout.EAST, type2list);		
 		
+//		Display-felder werden ins Fenster eingefügt
 		frame.add(BorderLayout.PAGE_START, panel);
 		frame.add(BorderLayout.LINE_START, scroll);
 		
