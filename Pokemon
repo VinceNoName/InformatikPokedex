@@ -1,4 +1,4 @@
-package pokedexSystem; 
+package pokedexSystem;
 public class Pokemon {
     private int ID;
     private String Name;
@@ -6,6 +6,7 @@ public class Pokemon {
     private boolean SecType;
     private int Type1;
     private int Type2;
+    private String [] Type = {"Normal", "Fire", "Water", "Grass", "Electric", "Ice", "Fighting", "Poison", "Ground", "Flying", "Psychic", "Bug", "Rock", "Ghost", "Dragon", "Dark", "Seel", "Fairy"};
     public Pokemon (int i, String n, int hp, int a, int d, int sa, int sd, int s, int t1, int t2, boolean st){
         ID = i;
         Name = n;
@@ -33,6 +34,10 @@ public class Pokemon {
     public int giveType2(){
         return Type2;
     }
+    
+	public String giveTypeName(int t){
+		return Type[t];
+	}
 
     public int giveStat(int st){
         return Stats[st];
