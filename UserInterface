@@ -23,7 +23,7 @@ public class UserInterface {
         return strArray;
 	}
 	
-	// Erstellt eine String-Array von allen Attributen und gibt diese aus
+	// Erstellt eine String-Array von allen Attributen. füllt die Daten jedes Pokemons ein, und gibt dieses aus
 	private static String[] AttributeList(String a, Pokemon[] ary) {
 		String NameList[] = new String[151];
 		String HPList[] = new String[151];
@@ -90,7 +90,7 @@ public class UserInterface {
 			return null;
 		}
 	}
-	
+//	Erstellt die Programmgrafik
 	private static void Frame() {
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		double width = screenSize.getWidth();
