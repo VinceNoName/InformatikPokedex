@@ -1,6 +1,6 @@
 package pokedexSystem;
 
-public class POKEDEX {
+public class POKEDEX {			//stellt den Graph dar, welcher die Typen relationen darstellt, also stark/schwach
 	private Sorter sort;
 	private NODE first;
 	private int count;
@@ -21,9 +21,9 @@ public class POKEDEX {
 			{0,2,2,2,2,2,2,2,2,2,4,2,2,4,2,1,2,2},  //Ghost
 			{2,2,2,2,2,2,2,2,2,2,2,2,2,2,4,2,1,0},  //Dragon
 			{2,1,1,1,2,4,2,2,2,2,2,2,4,2,2,2,1,4},  //Steel
-			{2,1,2,2,2,2,4,1,2,2,2,2,2,2,4,4,1,2}};   //Fairy
+			{2,1,2,2,2,2,4,1,2,2,2,2,2,2,4,4,1,2}}; //Fairy
 
-	public double compare (int t1,int t2,int tattack) {
+	public double compare (int t1,int t2,int tattack) {			//für das Vergleichen von 2 Statuswerten
 		if (t1 == t2) {
 			return (TypeChart[tattack][t1]/2);
 		}
@@ -33,45 +33,45 @@ public class POKEDEX {
 	}
 
 
-	public POKEDEX(NODE n){
+	public POKEDEX(NODE n){		//Erzeugt die Erste Node
 		first = n;
 		count = 1;
 		sort = new Sorter();
 	}
 
-	public void AddPokemon (int i, String n, int hp, int a, int d, int sa, int sd, int s, int t1, int t2, boolean st) { 
+	public void AddPokemon (int i, String n, int hp, int a, int d, int sa, int sd, int s, int t1, int t2, boolean st) { 	//fügt ein neues Pokemon in die Liste hinzu
 		first.AddPokemon (i, n, hp, a, d, sa, sd, s, t1, t2, st);
 		count++;
 	}
 
 
-	public String giveTypeName(int t){
+	public String giveTypeName(int t){	//gibt den Typennamen aus
 		return Type[t];
 	}
 
-	public int countPok (){
+	public int countPok (){			//zählt die Pokemon
 		return count;
 	}
 
-	public Pokemon findPokemon(int id){
+	public Pokemon findPokemon(int id){	//Sucht nach einem Pokemon
 		return first.findPoke(id);
 	}
 
-	public int [] [] getTypeChart() {
+	public int [] [] getTypeChart() {	//besorgt den Typen
 		return TypeChart;
 	}
 
-	public Sorter getSort() {
+	public Sorter getSort() {		//gibt das sortierte aus
 		return sort;
 	}
 	
-	public Pokemon[] PokeArray() {
+	public Pokemon[] PokeArray() {			//Erstellt das Array aus den 151 Pokemon
 		Pokemon[] PkAry = new Pokemon[151];
 		PkAry[0] = first.ArrayFill(0, PkAry);
 		return PkAry;
 	}
 	
-	public void printAll() {
+	public void printAll() {			//gibt alles aus
 		first.printAll();
 	}
 	
