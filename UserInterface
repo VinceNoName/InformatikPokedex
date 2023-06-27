@@ -23,39 +23,70 @@ public class UserInterface {
 	}
 	
 	private static String[] AttributeList(String a, Pokemon[] ary) {
-		String AtrList[] = new String[150];
+		String NameList[] = new String[151];
+		String HPList[] = new String[151];
+		String ATKList[] = new String[151];
+		String DEFList[] = new String[151];
+		String SPATKList[] = new String[151];
+		String SPDEFList[] = new String[151];
+		String SPDList[] = new String[151];
+		String TypeList[] = new String[151];
+		String Type2List[] = new String[151];
 		
 		switch(a) {
 		case "Name":
 			for(int i = 0; i < 151; i++) {
-				AtrList[i] = ary[i].giveName();
+				NameList[i] = ary[i].giveName();
 			}
+			return NameList;
 		case "HP":
 			for(int i = 0; i < 151; i++) {
-				AtrList[i] = Integer.toString(ary[i].giveStat(0));
+				HPList[i] = Integer.toString(ary[i].giveStat(0));
 			}
+			return HPList;
 		case "ATK":
 			for(int i = 0; i < 151; i++) {
-				AtrList[i] = Integer.toString(ary[i].giveStat(1));
+				ATKList[i] = Integer.toString(ary[i].giveStat(1));
 			}
+			return ATKList;
 		case "DEF":
 			for(int i = 0; i < 151; i++) {
-				AtrList[i] = Integer.toString(ary[i].giveStat(2));
+				DEFList[i] = Integer.toString(ary[i].giveStat(2));
 			}
+			return DEFList;
 		case "SP-ATK":
 			for(int i = 0; i < 151; i++) {
-				AtrList[i] = Integer.toString(ary[i].giveStat(3));
+				SPATKList[i] = Integer.toString(ary[i].giveStat(3));
 			}
+			return SPATKList;
 		case "SP-DEF":
 			for(int i = 0; i < 151; i++) {
-				AtrList[i] = Integer.toString(ary[i].giveStat(4));
+				SPDEFList[i] = Integer.toString(ary[i].giveStat(4));
 			}
+			return SPDEFList;
 		case "SPD":
 			for(int i = 0; i < 151; i++) {
-				AtrList[i] = Integer.toString(ary[i].giveStat(5));
+				SPDList[i] = Integer.toString(ary[i].giveStat(5));
 			}
+			return SPDList;
+		case "TYPE":
+			for(int i = 0; i < 151; i++) {
+				TypeList[i] = ary[i].giveTypeName(ary[i].giveType1());
+			}
+			return TypeList;
+		case "TYPE2":
+			for(int i = 0; i < 151; i++) {
+				if(ary[i].hasTwoTypes()) {
+					Type2List[i] = ary[i].giveTypeName(ary[i].giveType2());
+				}
+				else {
+					Type2List[i] = " ";
+				}
+			}
+			return Type2List;
+		default:
+			return null;
 		}
-		return AtrList;
 	}
 	
 	private static void Frame() {
@@ -73,6 +104,7 @@ public class UserInterface {
 		JPanel listpanel1 = new JPanel();
 		JPanel listpanel2 = new JPanel();
 		JPanel listpanel3 = new JPanel();
+		JPanel listpanel4 = new JPanel();
 		
 		JScrollPane scroll = new JScrollPane(listpanel);
 		
@@ -92,6 +124,8 @@ public class UserInterface {
 		JList satklist = new JList(AttributeList("SP-ATK", PDex.PokeArray()));
 		JList sdeflist = new JList(AttributeList("SP-DEF", PDex.PokeArray()));
 		JList spdlist = new JList(AttributeList("SPD", PDex.PokeArray()));
+		JList typelist = new JList(AttributeList("TYPE", PDex.PokeArray()));
+		JList type2list = new JList(AttributeList("TYPE2", PDex.PokeArray()));
 //		
 		JTextField searchbar = new JTextField(null, (int) Math.round(((0.26*width)-335)/11));
 		frame.setVisible(true);
@@ -111,13 +145,13 @@ public class UserInterface {
 		listpanel2.add(BorderLayout.CENTER, satklist);
 		listpanel2.add(BorderLayout.EAST, listpanel3);
 		listpanel3.add(BorderLayout.WEST, sdeflist);
-		listpanel3.add(BorderLayout.CENTER, spdlist);		
-
+		listpanel3.add(BorderLayout.CENTER, listpanel4);
+		listpanel4.add(BorderLayout.WEST, spdlist);
+		listpanel4.add(BorderLayout.CENTER, typelist);
+		listpanel4.add(BorderLayout.EAST, type2list);		
 		
 		frame.add(BorderLayout.PAGE_START, panel);
 		frame.add(BorderLayout.LINE_START, scroll);
 		
 	}
 }
-
-
