@@ -48,7 +48,7 @@ public class Pokemon {
 	return Type[t];
     }
 
-//returned die Array, die die Stats des Pokemon representieren
+//returned einen bestimmten Stat des Pokemon aus einem Array
     public int giveStat(int st){
         return Stats[st];
     }
