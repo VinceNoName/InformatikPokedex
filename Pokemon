@@ -1,4 +1,6 @@
 package pokedexSystem;
+
+//Verwaltet die Daten der einzelnen Pokemon
 public class Pokemon {
     private int ID;
     private String Name;
@@ -15,34 +17,43 @@ public class Pokemon {
         Type2 = t2; //Second Type
         SecType = st;   //is there a second type
     }
+
+//returned die ID des Pokemon
     public int giveID(){
         return ID;
     }
 
+//returned den Namen des Pokemon
     public String giveName(){
         return Name;
     }
-    
+
+//returned den Boolean der angiebt, ob es einen zweiten Typ giebt
     public boolean hasTwoTypes(){
         return SecType;
     }
 
+//returned den 1. Typ des Pokemon
     public int giveType1(){
         return Type1;
     }
-    
+
+//returned den 2. Typ des Pokemon
     public int giveType2(){
         return Type2;
     }
-    
-	public String giveTypeName(int t){
-		return Type[t];
-	}
 
+//returned den Namen 
+    public String giveTypeName(int t){
+	return Type[t];
+    }
+
+//returned die Array, die die Stats des Pokemon representieren
     public int giveStat(int st){
         return Stats[st];
     }
 
+//returned eine Int, die Summe aus allen Stats representiert
     public int giveBaseStatTotal(){
             return Stats[0]+Stats[1]+Stats[2]+Stats[3]+Stats[4]+Stats[5];
     }
