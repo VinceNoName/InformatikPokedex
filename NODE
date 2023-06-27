@@ -9,10 +9,15 @@ public class NODE {
     }
 
     public void AddPokemon (int i, String n, int hp, int a, int d, int sa, int sd, int s, int t1, int t2, boolean st) { 
-            NODE tempnext = next;
+    	if(next == null) {
+    		NODE tempnext = next;
             Pokemon Pke = new Pokemon(i, n, hp, a, d, sa, sd, s, t1, t2, st);
             next = new NODE(tempnext, Pke);
             System.out.println(Pke.giveName());
+    	}
+    	else {
+    		next.AddPokemon(i, n, hp, a, d, sa, sd, s, t1, t2, st);
+    	}
     }
 
     public Pokemon PokemonGeben() {
@@ -21,6 +26,10 @@ public class NODE {
 
     public NODE giveNext(){
         return next;
+    }
+    
+    public void setNext(NODE n) {
+    	next = n;
     }
 
     public int giveNr(){
@@ -36,6 +45,13 @@ public class NODE {
         }
     }
     
+    public void printAll() {
+    	System.out.println(Poke.giveName());
+    	if(next != null) {
+    		next.printAll();
+    	}
+    }
+    
     public Pokemon ArrayFill(int j, Pokemon[] pka) {
     	if(next != null && j <= 151) {
     		j+=1;
@@ -43,9 +59,10 @@ public class NODE {
     		return Poke;
     	}
     	else {
-    		return null;
+    		return Poke;
     	}
     }
+     
 //Es fehlt Ivysaur, Bubasaur ist numer 1, rest invertiert
     // THIS SHIT DOESNT FUCKING WORK; FIX IT BTICHHGHSDHJGSJKHJKSDJK
 }
