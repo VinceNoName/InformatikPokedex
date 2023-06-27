@@ -93,6 +93,8 @@ public class UserInterface {
 	
 	private static void Frame() {
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		double width = screenSize.getWidth();
+		double height = screenSize.getHeight();
 		
 //		Fenster wird erstellt
 		JFrame frame = new JFrame("Pokédex");
