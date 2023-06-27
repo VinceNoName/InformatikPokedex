@@ -36,7 +36,7 @@ public class NODE {
         return Poke.giveID();
     }
 
-    public Pokemon findPoke(int id){        //Suche Nach einem bestimmten Pokemon nach Pokedex nummer
+    public Pokemon findPoke(int id){        //Sucht Nach einem bestimmten Pokemon nach Pokedex nummer
         if(giveNr() == id) {
             return Poke;
         }
@@ -45,14 +45,14 @@ public class NODE {
         }
     }
     
-    public void printAll() {                    //gibt alle Pokemon aus
+    public void printAll() {                    //gibt alle Pokemon-Namen aus (Debug methode)
     	System.out.println(Poke.giveName());
     	if(next != null) {
     		next.printAll();
     	}
     }
     
-    public Pokemon ArrayFill(int j, Pokemon[] pka) {        //für die Pokemon in das Array ein
+    public Pokemon ArrayFill(int j, Pokemon[] pka) {        //fügt die Pokemon in ein Array ein
     	if(next != null && j <= 151) {
     		j+=1;
     		pka[j] = next.ArrayFill(j, pka);
