@@ -1,4 +1,4 @@
-package pokedexSystem;
+package Info;
 
 //Verwaltet die Daten der einzelnen Pokemon
 public class Pokemon {
@@ -9,6 +9,7 @@ public class Pokemon {
     private int Type1;
     private int Type2;
     private String [] Type = {"Normal", "Fire", "Water", "Grass", "Electric", "Ice", "Fighting", "Poison", "Ground", "Flying", "Psychic", "Bug", "Rock", "Ghost", "Dragon", "Dark", "Seel", "Fairy"};
+//constructor der Classe Pokemon
     public Pokemon (int i, String n, int hp, int a, int d, int sa, int sd, int s, int t1, int t2, boolean st){
         ID = i;
         Name = n;
