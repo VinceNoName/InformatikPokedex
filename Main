@@ -3,8 +3,8 @@ package Info;
 //Hauptklasse des Codes, enthält die main classe
 public class Main {			
 	public static POKEDEX Dex;
-    public static Pokemon POk;
-    public static NODE node;
+	public static Pokemon POk;
+	public static NODE node;
 	public static saving Save;
 	public static UserInterface UI;
 
