@@ -36,7 +36,7 @@ public class Sorter {
 		}    
 		public void searchquickSort(Pokemon arr[], String t, int begin, int end) {
 			    if (begin < end) {
-			        int partitionIndex = searcpartition(arr, t, begin, end);
+			        int partitionIndex = searchpartition(arr, t, begin, end);
 	
 			        searchquickSort(arr, t, begin, partitionIndex-1);
 			        searchquickSort(arr, t, partitionIndex+1, end);
