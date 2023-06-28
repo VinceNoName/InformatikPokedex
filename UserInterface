@@ -178,9 +178,9 @@ public class UserInterface {
 
 			public void actionPerformed(ActionEvent e) {
 			// Pokemon werden nach ähnlichkeit zum suchbegriff sortiert
-				PKary = PDex.PokeArray();
-				PDex.getSort().searchquickSirt(PKary, searchbar.getText(), 0, 150);
-				Collections.reverse(Arrays.asList(PkAry));
+				Pokemon [] PKary = PDex.PokeArray();
+				PDex.getSort().searchquickSort(PKary, searchbar.getText(), 0, 150);
+				Collections.reverse(Arrays.asList(PKary));
 
 			// Arrays werden neu eingefügt
 					JList pokelist = new JList(AttributeList("ID", PKary));				
