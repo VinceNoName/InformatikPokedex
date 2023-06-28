@@ -177,23 +177,45 @@ public class UserInterface {
 		search.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				PkAry = PDex.PokeArray();
-				Pokemon [] PKary = searchf.search(searchbar.getText(), PkAry);
+			// Pokemon werden nach ähnlichkeit zum suchbegriff sortiert
+				PKary = PDex.PokeArray();
+				PDex.getSort().searchquickSirt(PKary, searchbar.getText(), 0, 150);
+				Collections.reverse(Arrays.asList(PkAry));
 
-				JFrame searchframe = new JFrame("Search Result");
-				JPanel listp = 
-						
-				JList pokelist = new JList(AttributeList("ID", PkAry));				
-				JList namelist = new JList(AttributeList("Name", PkAry));
-				JList hplist = new JList(AttributeList("HP", PkAry));
-				JList atklist = new JList(AttributeList("ATK", PkAry));
-				JList deflist = new JList(AttributeList("DEF", PkAry));
-				JList satklist = new JList(AttributeList("SP-ATK", PkAry));
-				JList sdeflist = new JList(AttributeList("SP-DEF", PkAry));
-				JList spdlist = new JList(AttributeList("SPD", PkAry));
-				JList typelist = new JList(AttributeList("TYPE", PkAry));
-				JList type2list = new JList(AttributeList("TYPE2", PkAry));
-				
+			// Arrays werden neu eingefügt
+					JList pokelist = new JList(AttributeList("ID", PKary));				
+					JList namelist = new JList(AttributeList("Name", PKary));
+					JList hplist = new JList(AttributeList("HP", PKary));
+					JList atklist = new JList(AttributeList("ATK", PKary));
+					JList deflist = new JList(AttributeList("DEF", PKary));
+					JList satklist = new JList(AttributeList("SP-ATK", PKary));
+					JList sdeflist = new JList(AttributeList("SP-DEF", PKary));
+					JList spdlist = new JList(AttributeList("SPD", PKary));
+					JList typelist = new JList(AttributeList("TYPE", PKary));
+					JList type2list = new JList(AttributeList("TYPE2", PKary));
+					
+					listpanel.removeAll();
+					listpanel1.removeAll();
+					listpanel2.removeAll();
+					listpanel3.removeAll();
+					listpanel4.removeAll();
+					
+					listpanel.add(BorderLayout.LINE_START, pokelist);
+					listpanel.add(BorderLayout.CENTER, listpanel1);
+					listpanel.add(BorderLayout.EAST, listpanel2);
+					listpanel1.add(BorderLayout.WEST, namelist);
+					listpanel1.add(BorderLayout.CENTER, hplist);
+					listpanel1.add(BorderLayout.EAST, atklist);
+					listpanel2.add(BorderLayout.WEST, deflist);
+					listpanel2.add(BorderLayout.CENTER, satklist);
+					listpanel2.add(BorderLayout.EAST, listpanel3);
+					listpanel3.add(BorderLayout.WEST, sdeflist);
+					listpanel3.add(BorderLayout.CENTER, listpanel4);
+					listpanel4.add(BorderLayout.WEST, spdlist);
+					listpanel4.add(BorderLayout.CENTER, typelist);
+					listpanel4.add(BorderLayout.EAST, type2list);
+					SwingUtilities.updateComponentTreeUI(frame);
+
 			}
 			
 		});
