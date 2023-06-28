@@ -1,4 +1,4 @@
-package pokedexSystem;
+package Info;
 
 public class Main {			//Hauptklasse des Codes, wird autmatisch ausgeführt und startet die methoden der anderen Klassen
 	public static POKEDEX Dex;
@@ -9,13 +9,13 @@ public class Main {			//Hauptklasse des Codes, wird autmatisch ausgeführt und s
 
     
 	public static void main(String[] args) {
-		POk = new Pokemon (1, "Bulbasaur", 45, 49, 49, 65, 65, 45, 3, 7, true);
-		node = new NODE (null, POk);
-		Dex = new POKEDEX(node);
-		Save = new saving(Dex);
-		saving.read();
-		Dex.printAll();
-		UI = new UserInterface(Dex);
+		POk = new Pokemon (1, "Bulbasaur", 45, 49, 49, 65, 65, 45, 3, 7, true); //creates the first Pokemon
+		node = new NODE (null, POk);	//creates the first nod with Bulbasaur and null as next
+		Dex = new POKEDEX(node);	//creates the POkedex, containing the nodes 
+		Save = new saving(Dex);		//creates a instance of Saving to load the POkemon in the Pokedex
+		saving.read();				//starts the instance of Saving
+		//Dex.printAll();			//test to see if all POkemon have been loaded korectly			
+		UI = new UserInterface(Dex);	//starts the UI (User Interface)
 	}
 
 }
