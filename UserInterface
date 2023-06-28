@@ -12,7 +12,7 @@ public class UserInterface {
 	private static JFrame frame;
 	private static int Stat;
 	private static Pokemon PkAry[];
-	private static Search searchf;
+	public static Search searchf;
 
 	public UserInterface(POKEDEX dex){
 		PDex = dex;
@@ -23,75 +23,85 @@ public class UserInterface {
 	
 
 	
-	// Erstellt ein String-Array mit Nummern von 1 bis 151
+	// Erstellt ein String-Array mit Nummern von "ID" und Nummern von 1 bis 151
 	private static String[] NumberList() {
-		int intAry[] = IntStream.range(1,152).toArray();
+		int intAry[] = IntStream.range(0,152).toArray();
         String[] strArray = new String[intAry.length];
-        
-        for (int i = 0; i < intAry.length; i++) {
+        strArray[0] = "ID";
+        for (int i = 1; i < intAry.length; i++) {
             strArray[i] = String.valueOf(intAry[i]);
         }
         return strArray;
 	}
 	
-	// Erstellt eine String-Array von allen Attributen. füllt die Daten jedes Pokemons ein, und gibt dieses aus
+	// Erstellt eine String-Array von allen Attributen, füllt die Daten jedes Pokemon ein, und gibt dieses aus
 	private static String[] AttributeList(String a, Pokemon[] ary) {
-		String NameList[] = new String[151];
-		String HPList[] = new String[151];
-		String ATKList[] = new String[151];
-		String DEFList[] = new String[151];
-		String SPATKList[] = new String[151];
-		String SPDEFList[] = new String[151];
-		String SPDList[] = new String[151];
-		String TypeList[] = new String[151];
-		String Type2List[] = new String[151];
-		String IDList[] = new String[151];
+		String NameList[] = new String[152];
+		String HPList[] = new String[152];
+		String ATKList[] = new String[152];
+		String DEFList[] = new String[152];
+		String SPATKList[] = new String[152];
+		String SPDEFList[] = new String[152];
+		String SPDList[] = new String[152];
+		String TypeList[] = new String[152];
+		String Type2List[] = new String[152];
+		String IDList[] = new String[152];
 		
+		//Auswahl welches Array gefüllt wird
 		switch(a) {
 		case "Name":
-			for(int i = 0; i < 151; i++) {
-				NameList[i] = ary[i].giveName();
+			NameList[0] = "Name";
+			for(int i = 1; i < 152; i++) {
+				NameList[i] = ary[i-1].giveName();
 			}
 			return NameList;
 		case "HP":
-			for(int i = 0; i < 151; i++) {
-				HPList[i] = Integer.toString(ary[i].giveStat(0));
+			HPList[0] = "HP";
+			for(int i = 1; i < 152; i++) {
+				HPList[i] = Integer.toString(ary[i-1].giveStat(0));
 			}
 			return HPList;
 		case "ATK":
-			for(int i = 0; i < 151; i++) {
-				ATKList[i] = Integer.toString(ary[i].giveStat(1));
+			ATKList[0] = "ATK";
+			for(int i = 1; i < 152; i++) {
+				ATKList[i] = Integer.toString(ary[i-1].giveStat(1));
 			}
 			return ATKList;
 		case "DEF":
-			for(int i = 0; i < 151; i++) {
-				DEFList[i] = Integer.toString(ary[i].giveStat(2));
+			DEFList[0] = "DEF";
+			for(int i = 1; i < 152; i++) {
+				DEFList[i] = Integer.toString(ary[i-1].giveStat(2));
 			}
 			return DEFList;
 		case "SP-ATK":
-			for(int i = 0; i < 151; i++) {
-				SPATKList[i] = Integer.toString(ary[i].giveStat(3));
+			SPATKList[0] = "SP-ATK";
+			for(int i = 1; i < 152; i++) {
+				SPATKList[i] = Integer.toString(ary[i-1].giveStat(3));
 			}
 			return SPATKList;
 		case "SP-DEF":
-			for(int i = 0; i < 151; i++) {
-				SPDEFList[i] = Integer.toString(ary[i].giveStat(4));
+			SPDEFList[0] = "SP-DEF";
+			for(int i = 1; i < 152; i++) {
+				SPDEFList[i] = Integer.toString(ary[i-1].giveStat(4));
 			}
 			return SPDEFList;
 		case "SPD":
-			for(int i = 0; i < 151; i++) {
-				SPDList[i] = Integer.toString(ary[i].giveStat(5));
+			SPDList[0] = "SPD";
+			for(int i = 1; i < 152; i++) {
+				SPDList[i] = Integer.toString(ary[i-1].giveStat(5));
 			}
 			return SPDList;
 		case "TYPE":
-			for(int i = 0; i < 151; i++) {
-				TypeList[i] = ary[i].giveTypeName(ary[i].giveType1());
+			TypeList[0] = "Typing";
+			for(int i = 1; i < 152; i++) {
+				TypeList[i] = ary[i-1].giveTypeName(ary[i-1].giveType1());
 			}
 			return TypeList;
 		case "TYPE2":
-			for(int i = 0; i < 151; i++) {
-				if(ary[i].hasTwoTypes()) {
-					Type2List[i] = ary[i].giveTypeName(ary[i].giveType2());
+			Type2List[0] = " ";
+			for(int i = 1; i < 152; i++) {
+				if(ary[i-1].hasTwoTypes()) {
+					Type2List[i] = ary[i-1].giveTypeName(ary[i-1].giveType2());
 				}
 				else {
 					Type2List[i] = " ";
@@ -99,8 +109,9 @@ public class UserInterface {
 			}
 			return Type2List;
 		case "ID":
-			for(int i = 0; i < 151; i++) {
-				IDList[i] = Integer.toString(ary[i].giveStat(6));
+			IDList[0] = "ID";
+			for(int i = 1; i < 152; i++) {
+				IDList[i] = Integer.toString(ary[i-1].giveStat(6));
 			}
 			return IDList;
 		default:
@@ -115,7 +126,7 @@ public class UserInterface {
 		
 //		Fenster wird eingestellt
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize((int) Math.round(457),(int) Math.round(740));
+		frame.setSize((int) Math.round(508),(int) Math.round(822));
 		frame.setResizable(false);
 		
 //		Display-felder werden erstellt
@@ -158,7 +169,7 @@ public class UserInterface {
 		});
 		
 //		Suchleiste wird erstellt
-		JTextField searchbar = new JTextField(null, (int) Math.round(((0.26*width)-335)/11));
+		JTextField searchbar = new JTextField(null, 25);
 		frame.setVisible(true);
 		
 //		Knöpfe werden erstellt
@@ -168,6 +179,21 @@ public class UserInterface {
 			public void actionPerformed(ActionEvent e) {
 				PkAry = PDex.PokeArray();
 				Pokemon [] PKary = searchf.search(searchbar.getText(), PkAry);
+
+				JFrame searchframe = new JFrame("Search Result");
+				JPanel listp = 
+						
+				JList pokelist = new JList(AttributeList("ID", PkAry));				
+				JList namelist = new JList(AttributeList("Name", PkAry));
+				JList hplist = new JList(AttributeList("HP", PkAry));
+				JList atklist = new JList(AttributeList("ATK", PkAry));
+				JList deflist = new JList(AttributeList("DEF", PkAry));
+				JList satklist = new JList(AttributeList("SP-ATK", PkAry));
+				JList sdeflist = new JList(AttributeList("SP-DEF", PkAry));
+				JList spdlist = new JList(AttributeList("SPD", PkAry));
+				JList typelist = new JList(AttributeList("TYPE", PkAry));
+				JList type2list = new JList(AttributeList("TYPE2", PkAry));
+				
 			}
 			
 		});
