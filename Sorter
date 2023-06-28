@@ -32,26 +32,34 @@ public class Sorter {
 	    arr[end] = swapTemp;
 
 	    return i+1;
+	}    
+	public void searchquickSort(Pokemon arr[], String t, int begin, int end) {
+		    if (begin < end) {
+		        int partitionIndex = searcpartition(arr, t, begin, end);
+
+		        searchquickSort(arr, t, begin, partitionIndex-1);
+		        searchquickSort(arr, t, partitionIndex+1, end);
+		    }
 	}
-//	
-//	private int searchpartition(Pokemon arr[],String t int begin, int end) {
-//	    double pivot = findSimilarity(t, arr[end].giveName());
-//	    int i = (begin-1);
-//
-//	    for (int j = begin; j < end; j++) {
-//	        if (findSimilarity(t, arr[j].giveName()) <= pivot) {
-//	            i++;
-//
-//	            Pokemon swapTemp = arr[i];
-//	            arr[i] = arr[j];
-//	            arr[j] = swapTemp;
-//	        }
-//	    }
-//
-//	    Pokemon swapTemp = arr[i+1];
-//	    arr[i+1] = arr[end];
-//	    arr[end] = swapTemp;
-//
-//	    return i+1;
-//	}
+
+	private int searchpartition(Pokemon arr[],String t, int begin, int end) {
+	    double pivot = findSimilarity(t, arr[end].giveName());
+	    int i = (begin-1);
+
+	    for (int j = begin; j < end; j++) {
+	        if (findSimilarity(t, arr[j].giveName()) <= pivot) {
+	            i++;
+
+	            Pokemon swapTemp = arr[i];
+	            arr[i] = arr[j];
+	            arr[j] = swapTemp;
+	        }
+	    }
+
+	    Pokemon swapTemp = arr[i+1];
+	    arr[i+1] = arr[end];
+	    arr[end] = swapTemp;
+
+	    return i+1;
+		}
 }
