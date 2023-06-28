@@ -1,89 +1,200 @@
 package Info;
 
-//verwaltet die Konoten der liste
-public class POKEDEX {			
-	private Sorter sort;
-	private NODE first;
-	private int count;
-	private String [] Type = {"Normal", "Fire", "Water", "Grass", "Electric", "Ice", "Fighting", "Poison", "Ground", "Flying", "Psychic", "Bug", "Rock", "Ghost", "Dragon", "Dark", "Steel", "Fairy"};
-	// Matrix, die Typenrelationen darstellt, also stark/schwach
-	private int [] [] TypeChart = {{2,2,2,2,2,2,2,2,2,2,2,2,1,0,2,2,1,2},  //Normal
-			{2,1,1,2,4,4,2,2,2,2,2,4,1,2,1,2,4,2},  //Fire
-			{2,4,1,2,1,2,2,2,4,2,2,2,4,2,1,2,2,2},  //Water
-			{2,2,4,1,1,2,2,2,0,4,2,2,2,2,1,2,2,2},  //Electric
-			{2,1,4,2,1,2,2,1,4,1,2,1,4,2,1,2,1,2},  //Grass
-			{2,1,1,2,4,1,2,2,4,4,2,2,2,2,4,2,1,2},  //Ice
-			{4,2,2,2,2,4,2,1,2,1,1,1,4,0,2,1,4,2},  //Fight
-			{2,2,2,2,4,2,2,1,1,2,2,2,1,1,2,2,0,4},  //Poison
-			{2,1,2,2,4,2,1,1,2,1,4,2,2,1,2,4,1,1},  //Ground
-			{2,2,2,1,4,2,4,2,2,2,2,4,1,2,2,2,1,2},  //Flying
-			{2,2,2,2,2,2,4,4,2,2,1,2,2,2,2,0,1,2},  //Psychic
-			{2,1,2,2,4,2,1,1,2,1,4,2,2,1,2,4,1,1},  //Bug
-			{2,4,2,2,2,4,1,2,1,4,2,4,2,2,2,2,1,2},  //Rock
-			{0,2,2,2,2,2,2,2,2,2,4,2,2,4,2,1,2,2},  //Ghost
-			{2,2,2,2,2,2,2,2,2,2,2,2,2,2,4,2,1,0},  //Dragon
-			{2,1,1,1,2,4,2,2,2,2,2,2,4,2,2,2,1,4},  //Steel
-			{2,1,2,2,2,2,4,1,2,2,2,2,2,2,4,4,1,2}}; //Fairy
+import java.io.*;
 
-	//für das Vergleichen der Typen
-	public double compare (int t1,int t2,int tattack) {			
-		if (t1 == t2) { //teste ob es 2 Typen gibt
-			return (TypeChart[tattack][t1]/2);
-		}
-		else {
-		return (TypeChart[tattack][t1]*TypeChart[tattack][t2]/2);
-		}
-	}
+//List das Textdocument mit den gespeicherten Pokemon ein, und fügt diese zu dem Programm hinzu
+public class saving {
+  public static POKEDEX DEX;
 
+//construktor für einen Object der classe saving
+  public saving(POKEDEX deX) {
+  	DEX = deX;
+  }
 
-	//Constructor füe ein Object der Classe Pokedex
-	public POKEDEX(NODE n){		
-		first = n;
-		count = 1;
-		sort = new Sorter();
-	}
+//List das Textdocument mit den gespeicherten Pokemon ein, und fügt diese zu dem Programm hinzu
+  public static void read (){
+      String fileName = "DATABANK.txt"; //beinhaltet den namen des auszulesenden Textdocumentes
+      try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+          String Line;
+        //gehe das Gnmaze Textdokument Datenbank durch, solange ienze zeile Inhalt hat
+          for  (int i = 0; (Line = reader.readLine()) != null;i++) { 
+              String name = givename(Line);
+              int HP = giveHP(Line);
+              int attack = giveattack(Line);
+              int defense = givedefense(Line);
+              int sattack = givesattack(Line);
+              int sdefense = givesdfense (Line);
+              int speed = givespeed(Line);
+              int Type1 = giveType1(Line);
+              int Type2 = giveType2(Line);
+              boolean SecondType = true;
+              if (Type1 == Type2){
+                  SecondType = false;
+              }
+              //System.out.println(name+" "+HP+" "+attack+" "+defense+ " "+ sattack+ " "+ sdefense+ " "+speed); (Debug)
+              //gibt alle daten weiter um damit ein neues POkemon zu kreiren
+              DEX.AddPokemon(i+2, name, HP, attack, defense, sattack, sdefense, speed, Type1, Type2, SecondType); 
+          }
+      } catch (IOException e) {
+          System.err.println("Error reading file: " + e.getMessage());
+      }
+  }
 
-	//fügt ein neues Pokemon hinzu
-	public void AddPokemon (int i, String n, int hp, int a, int d, int sa, int sd, int s, int t1, int t2, boolean st) { 	//fügt ein neues Pokemon in die Liste hinzu
-		first.AddPokemon (i, n, hp, a, d, sa, sd, s, t1, t2, st);
-		count++;
-	}
+//gibt den Substring, der den Namen des Pokemons beinhaltet
+  private static String givename(String Line){
+      for (int i = 0;i<Line.length();i++){ //gehe durtch bis zum ersten ,
+          if (Line.charAt(i) == ','){
+              return (Line.substring(0,i));
+          }
+          
+      }
+      return null;
+  }
 
-//endert die int die den Typen angibt zu dem representierenden String
-	public String giveTypeName(int t){	
-		return Type[t];
-	}
+  private static int giveHP(String Line){
+  	int hp = 0;
+      int j = 0;
+      for (int i = 0; i<Line.length();i++){ //gehe durtch bis zum ersten , und setze j auf dessen Position
+          if (Line.charAt(i) == ',' && j == 0){
+             j = i+1;
+          }
+          else if (Line.charAt(i) == ',' ){ //gebe StoI den Substring zwischen j und i
+              hp = StoI(Line.substring(j, i));
+              break;
+          }
+      }
+      return hp;
+  }
 
-	//zählt die Pokemon
-	public int countPok (){			
-		return count;
-	}
+//gibt den Substring, der den Angriffswert des Pokemons beinhaltet (unterteilung wie bei giveHP, nur mit späteren ,)
+  private static int giveattack (String Line){
+  	int attack = 0;
+      int j = 0;
+      int count = 0;
+      for (int i = 0; i<Line.length();i++){
+          if (Line.charAt(i) == ',' && count != 2){
+             j=i+1;
+             count++;
+          }
+          else if (Line.charAt(i) == ',' && count == 2){            	
+          	attack = StoI(Line.substring(j, i));
+              break;
+          }
+      }
+      return attack;
+  }
 
-	//Sucht nach einem Pokemon, basierend auf dessen ID
-	public Pokemon findPokemon(int id){	
-		return first.findPoke(id);
-	}
+//gibt den Substring, der den Verteidigungswert des Pokemons beinhaltet (unterteilung wie bei giveHP, nur mit späteren ,)
+  private static int givedefense (String Line){
+      int defense = 0;
+      int j = 0;
+      int count = 0;
+      for (int i = 0; i<Line.length();i++){
+          if (Line.charAt(i) == ',' && count != 3){
+             j=i+1;
+             count++;
+          }
+          else if (Line.charAt(i) == ',' && count == 3){
+              defense = StoI(Line.substring(j, i));
+              break;
+          }
+      }
+      return defense;
+  }
 
-	//besorgt die Typen-Matrix
-	public int [] [] getTypeChart() {	
-		return TypeChart;
-	}
+//gibt den Substring, der den Special Angriffswert des Pokemons beinhaltet (unterteilung wie bei giveHP, nur mit späteren ,)
+  private static int givesattack (String Line){
+      int sattack = 0;
+      int j = 0;
+      int count = 0;
+      for (int i = 0; i<Line.length();i++){
+          if (Line.charAt(i) == ',' && count != 4){
+             j=i+1;
+             count++;
+          }
+          else if (Line.charAt(i) == ',' && count == 4){
+              sattack = StoI(Line.substring(j, i));
+              break;
+          }
+      }
+      return sattack;
+  }
 
-	// gibt den Sortierer aus 
-	public Sorter getSort() {		
-		return sort;
-	}
-	
-	//Erstellt ein Array aus den 151 Pokemon für das UI
-	public Pokemon[] PokeArray() {			
-		Pokemon[] PkAry = new Pokemon[151];
-		PkAry[0] = first.ArrayFill(0, PkAry);
-		return PkAry;
-	}
-	
-	//gibt alle pokemon namen aus (Debug methode)
-	public void printAll() {			
-		first.printAll();
-	}
-	
+//gibt den Substring, der den Special Verteidigungswert des Pokemons beinhaltet (unterteilung wie bei giveHP, nur mit späteren ,)
+  private static int givesdfense (String Line){
+      int sdefsense = 0;
+      int j = 0;
+      int count = 0;
+      for (int i = 0; i<Line.length();i++){
+          if (Line.charAt(i) == ',' && count != 5){
+             j=i+1;
+             count++;
+          }
+          else if (Line.charAt(i) == ',' && count == 5){
+              sdefsense = StoI(Line.substring(j, i));
+              break;
+          }
+      }
+      return sdefsense;
+  }
+
+//gibt den Substring, der den Geschwindigkeitswert des Pokemons beinhaltet (unterteilung wie bei giveHP, nur mit späteren ,)
+  private static int givespeed (String Line){
+      int speed = 0;
+      int j = 0;
+      int count = 0;
+      for (int i = 0; i<Line.length();i++){
+          if (Line.charAt(i) == ',' && count != 6){
+             j=i+1;
+             count++;
+          }
+          else if (Line.charAt(i) == ',' && count == 6){
+              speed = StoI(Line.substring(j, i));
+              break;
+          }
+      }
+      return speed;
+  }
+
+//Wandelt einen String in einen Intager wert um
+  private static int StoI (String x){
+      return Integer.parseInt(x);
+  }
+
+//gibt den Substring, der den Ersten Typ des Pokemons beinhaltet (unterteilung wie bei giveHP, nur mit späteren ,)
+  private static int giveType1 (String Line){
+      int sattack = 0;
+      int j = 0;
+      int count = 0;
+      for (int i = 0; i<Line.length();i++){
+          if (Line.charAt(i) == ',' && count != 7){
+             j=i+1;
+             count++;
+          }
+          else if (Line.charAt(i) == ',' && count == 7){
+              sattack = StoI(Line.substring(j, i));
+              break;
+          }
+      }
+      return sattack;
+  }
+
+//gibt den Substring, der den Zweiten Typ des Pokemons beinhaltet (unterteilung wie bei giveHP, nur mit späteren ,)
+  private static int giveType2 (String Line){
+      int sattack = 0;
+      int j = 0;
+      int count = 0;
+      for (int i = 0; i<Line.length();i++){
+          if (Line.charAt(i) == ',' && count != 8){
+             j=i+1;
+             count++;
+          }
+          else if (Line.charAt(i) == ',' && count == 8){
+              sattack = StoI(Line.substring(j, i));
+              break;
+          }
+      }
+      return sattack;
+  }
+  
 }
