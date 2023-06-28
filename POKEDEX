@@ -1,6 +1,7 @@
-package pokedexSystem;
+package Info;
 
-public class POKEDEX {			//stellt den Graph dar
+//verwaltet die Konoten der liste
+public class POKEDEX {			
 	private Sorter sort;
 	private NODE first;
 	private int count;
@@ -24,8 +25,9 @@ public class POKEDEX {			//stellt den Graph dar
 			{2,1,1,1,2,4,2,2,2,2,2,2,4,2,2,2,1,4},  //Steel
 			{2,1,2,2,2,2,4,1,2,2,2,2,2,2,4,4,1,2}}; //Fairy
 
-	public double compare (int t1,int t2,int tattack) {			//für das Vergleichen von 2 Statuswerten
-		if (t1 == t2) {
+	//für das Vergleichen der Typen
+	public double compare (int t1,int t2,int tattack) {			
+		if (t1 == t2) { //teste ob es 2 Typen gibt
 			return (TypeChart[tattack][t1]/2);
 		}
 		else {
@@ -34,45 +36,53 @@ public class POKEDEX {			//stellt den Graph dar
 	}
 
 
-	public POKEDEX(NODE n){		//Konstruktor: Erzeugt die Erste Node
+	//Constructor füe ein Object der Classe Pokedex
+	public POKEDEX(NODE n){		
 		first = n;
 		count = 1;
 		sort = new Sorter();
 	}
 
+	//fügt ein neues Pokemon hinzu
 	public void AddPokemon (int i, String n, int hp, int a, int d, int sa, int sd, int s, int t1, int t2, boolean st) { 	//fügt ein neues Pokemon in die Liste hinzu
 		first.AddPokemon (i, n, hp, a, d, sa, sd, s, t1, t2, st);
 		count++;
 	}
 
-
-	public String giveTypeName(int t){	//gibt den Namen eines Typen aus
+//endert die int die den Typen angibt zu dem representierenden String
+	public String giveTypeName(int t){	
 		return Type[t];
 	}
 
-	public int countPok (){			//zählt die Pokemon
+	//zählt die Pokemon
+	public int countPok (){			
 		return count;
 	}
 
-	public Pokemon findPokemon(int id){	//Sucht nach einem Pokemon
+	//Sucht nach einem Pokemon, basierend auf dessen ID
+	public Pokemon findPokemon(int id){	
 		return first.findPoke(id);
 	}
 
-	public int [] [] getTypeChart() {	//besorgt die Typen-Matrix
+	//besorgt die Typen-Matrix
+	public int [] [] getTypeChart() {	
 		return TypeChart;
 	}
 
-	public Sorter getSort() {		// gibt den Sortierer aus 
+	// gibt den Sortierer aus 
+	public Sorter getSort() {		
 		return sort;
 	}
 	
-	public Pokemon[] PokeArray() {			//Erstellt ein Array aus den 151 Pokemon
+	//Erstellt ein Array aus den 151 Pokemon für das UI
+	public Pokemon[] PokeArray() {			
 		Pokemon[] PkAry = new Pokemon[151];
 		PkAry[0] = first.ArrayFill(0, PkAry);
 		return PkAry;
 	}
 	
-	public void printAll() {			//gibt alle pokemon namen aus
+	//gibt alle pokemon namen aus (Debug methode)
+	public void printAll() {			
 		first.printAll();
 	}
 	
