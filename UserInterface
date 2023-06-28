@@ -1,4 +1,4 @@
-package pokedexSystem;
+package Info;
 
 import java.awt.*;
 import java.awt.event.*;
