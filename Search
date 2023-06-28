@@ -3,6 +3,7 @@ package Info;
 import java.util.*;
 
 public class Search {
+	//constructor eines Objectes der Classe Search
 	public Search() {
 	}
 
