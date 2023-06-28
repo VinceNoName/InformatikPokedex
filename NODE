@@ -1,65 +1,74 @@
-package pokedexSystem;
+package Info;
 public class NODE {
-    private NODE next;
-    private Pokemon Poke;
-    
-    public NODE (NODE nex, Pokemon Pok){        //geht die Knoten durch, welche die Daten enthalten
-        next = nex;
-        Poke = Pok;
-    }
+	private NODE next;
+	private Pokemon Poke;
 
-    public void AddPokemon (int i, String n, int hp, int a, int d, int sa, int sd, int s, int t1, int t2, boolean st) { //besorgt sich die Attribute der Pokemon
-    	if(next == null) {
-    		NODE tempnext = next;
-            Pokemon Pke = new Pokemon(i, n, hp, a, d, sa, sd, s, t1, t2, st);
-            next = new NODE(tempnext, Pke);
-            System.out.println(Pke.giveName());
-    	}
-    	else {
-    		next.AddPokemon(i, n, hp, a, d, sa, sd, s, t1, t2, st);
-    	}
-    }
+	//constructor der Classe Node
+	public NODE (NODE nex, Pokemon Pok){        
+		next = nex;
+		Poke = Pok;
+	}
 
-    public Pokemon PokemonGeben() {
-        return Poke;
-    }
+	//fügt neue POkemon zu der Liste hinzu
+	public void AddPokemon (int i, String n, int hp, int a, int d, int sa, int sd, int s, int t1, int t2, boolean st) { 
+		if(next == null) { //tetsed ob es ein nächstes Pokemon gibt, wen nein, setze neues auf nächstes;
+			NODE tempnext = next;
+			Pokemon Pke = new Pokemon(i, n, hp, a, d, sa, sd, s, t1, t2, st);
+			next = new NODE(tempnext, Pke);
+			System.out.println(Pke.giveName());
+		}
+		else {
+			next.AddPokemon(i, n, hp, a, d, sa, sd, s, t1, t2, st);
+		}
+	}
 
-    public NODE giveNext(){
-        return next;
-    }
-    
-    public void setNext(NODE n) {
-    	next = n;
-    }
+	//gibt1 das POkemon als typ der Classe POkemon wieder
+	public Pokemon PokemonGeben() {
+		return Poke;
+	}
 
-    public int giveNr(){
-        return Poke.giveID();
-    }
+	//gibt den nächsten Knoten wieder
+	public NODE giveNext(){
+		return next;
+	}
 
-    public Pokemon findPoke(int id){        //Sucht Nach einem bestimmten Pokemon nach Pokedex nummer
-        if(giveNr() == id) {
-            return Poke;
-        }
-        else {
-            return next.findPoke(id);
-        }
-    }
-    
-    public void printAll() {                    //gibt alle Pokemon-Namen aus (Debug methode)
-    	System.out.println(Poke.giveName());
-    	if(next != null) {
-    		next.printAll();
-    	}
-    }
-    
-    public Pokemon ArrayFill(int j, Pokemon[] pka) {        //fügt die Pokemon in ein Array ein
-    	if(next != null && j <= 151) {
-    		j+=1;
-    		pka[j] = next.ArrayFill(j, pka);
-    		return Poke;
-    	}
-    	else {
-    		return Poke;
-    	}
-    }
+	//setzt den nächsten auf einen neuen Knoten (für Theoretische erweiterungen)
+	public void setNext(NODE n) {
+		next = n;
+	}
+
+	//gibt die Id des POkemon wieder
+	public int giveNr(){
+		return Poke.giveID();
+	}
+
+	//gibt ein Pokemon wieder, basierend auf dernen ID
+	public Pokemon findPoke(int id){       
+		if(giveNr() == id) { //führe durch, wenn die gesuchte ID = der ID desPokemon ist
+			return Poke;
+		}
+		else { 	//sonst gehe zum nächsten
+			return next.findPoke(id);
+		}
+	}
+
+	//gibt alle Pokemon-Namen aus (Debug methode)
+	public void printAll() {                    
+		System.out.println(Poke.giveName());
+		if(next != null) {
+			next.printAll();
+		}
+	}
+
+	//fügt die Pokemon in ein Array ein für das UI
+	public Pokemon ArrayFill(int j, Pokemon[] pka) {        
+		if(next != null && j <= 151) { //schaue bis zum letzten Pokemon (bei diesem ist next = null)
+			j+=1;
+			pka[j] = next.ArrayFill(j, pka);
+			return Poke;
+		}
+		else { //wenn next = null, ist das letzte Pokemon ereicht, und dieses wird übergeben
+			return Poke;
+		}
+	}
 }
