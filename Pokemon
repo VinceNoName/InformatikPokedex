@@ -12,7 +12,7 @@ public class Pokemon {
     public Pokemon (int i, String n, int hp, int a, int d, int sa, int sd, int s, int t1, int t2, boolean st){
         ID = i;
         Name = n;
-        Stats = new int[] {hp, a, d, sa, sd, s};
+        Stats = new int[] {hp, a, d, sa, sd, s, i};
         Type1 = t1; //First Type
         Type2 = t2; //Second Type
         SecType = st;   //is there a second type
