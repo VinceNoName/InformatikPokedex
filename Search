@@ -6,11 +6,13 @@ public class Search {
 	public Search() {
 	}
 	
+	// Bestimmt die Levenshtein Distance zwischen 2 strings
 	public static int getDistance(String x, String y)
     {
         int m = x.length();
         int n = y.length();
- 
+        
+        // Vergleichsmatrix wird erstellt
         int[][] T = new int[m+1][n+1];
         for(int i=1; i<=m; i++) {
             T[i][0] = i;
@@ -18,7 +20,8 @@ public class Search {
         for(int j=1; j<=n; j++) {
             T[0][j] = j;
         }
- 
+        
+        // Buchstaben im String werden zu einzelnen chars und chars zu integern, die dann miteinander in der matrix verglichen werden
         int cost;
         for(int i=1; i<=m; i++) {
             for(int j=1; j<=n; j++) {
@@ -30,10 +33,10 @@ public class Search {
  
         return T[m][n];
     }
- 
+	// Mit der Levenshtein Distance wird ähnlichkeit von 2 Strings berechnet
     public static double findSimilarity(String x, String y) {
         if(x == null || y == null) {
-            throw new IllegalArgumentException("Strings must not be null");
+            throw new IllegalArgumentException("Strings can't be null");
         }
         
         double maxLength = Double.max(x.length(), y.length());
@@ -43,6 +46,7 @@ public class Search {
         return 1.0;
     }
 	
+    // Pokemon Namen werden mit dem Input string verglichen und in ein seperates Array eingeführt
 	public Pokemon[] search(String t, Pokemon[] PkAry) {
 	if(t != "") {
 		Pokemon[] TempArray = new Pokemon[151];
@@ -53,6 +57,7 @@ public class Search {
 				j+=1;
 			}
 		}
+		Arrays.fill(TempArray, 150-j, 150, "");
 		return TempArray;
 	}
 	else {
