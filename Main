@@ -1,13 +1,15 @@
 package Info;
 
-public class Main {			//Hauptklasse des Codes, wird autmatisch ausgeführt und startet die methoden der anderen Klassen
+//Hauptklasse des Codes, enthält die main classe
+public class Main {			
 	public static POKEDEX Dex;
     public static Pokemon POk;
     public static NODE node;
 	public static saving Save;
 	public static UserInterface UI;
 
-    
+
+	//main Klasse, wird automatisch bei Code Start ausgefürth und Strted alle Funktionen
 	public static void main(String[] args) {
 		POk = new Pokemon (1, "Bulbasaur", 45, 49, 49, 65, 65, 45, 3, 7, true); //creates the first Pokemon
 		node = new NODE (null, POk);	//creates the first nod with Bulbasaur and null as next
